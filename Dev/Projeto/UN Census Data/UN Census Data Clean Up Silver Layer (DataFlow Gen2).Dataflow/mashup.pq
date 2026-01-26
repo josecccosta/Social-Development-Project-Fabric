@@ -9,13 +9,14 @@ shared pop_age_sex_urban_rural = let
   #"Navigation 2" = #"Navigation 1"{[Id = "UN_Census_Demographic_Statistics_Database.pop_age_sex_urban_rural", ItemKind = "Table"]}[Data],
   #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"Table_Code", "Country_or_Area", "Reference_Date", "Area", "Sex", "Value_Footnotes", "Source_Year", "Reliability"}),
   #"Filtered rows" = Table.SelectRows(#"Removed columns", each not Text.Contains([Age], "-")),
-  #"Removed columns 1" = Table.RemoveColumns(#"Filtered rows", {"Record_Type", "Age", "Record_Type_Code", "Reliability_Code"}),
+  #"Removed columns 1" = Table.RemoveColumns(#"Filtered rows", {"Record_Type", "Record_Type_Code", "Reliability_Code"}),
   #"Added index" = Table.AddIndexColumn(#"Removed columns 1", "Index", 0, 1, Int64.Type),
   #"Reordered columns" = Table.ReorderColumns(#"Added index", {"Index", "Country_or_Area_Code", "Year", "Area_Code", "Sex_Code", "Code_of_Age", "Value"}),
   #"Renamed columns" = Table.RenameColumns(#"Reordered columns", {{"Index", "ID"}}),
-  #"Marked key columns" = Table.AddKey(#"Renamed columns", {"ID"}, false)
+  #"Marked key columns" = Table.AddKey(#"Renamed columns", {"ID"}, false),
+  #"Removed columns 2" = Table.RemoveColumns(#"Marked key columns", {"Code_of_Age"})
 in
-  #"Marked key columns";
+  #"Removed columns 2";
 [DataDestinations = {[Definition = [Kind = "Reference", QueryName = "employed_pop_by_status_in_employment_by_age_area_DataDestination", IsNewTarget = true], Settings = [Kind = "Automatic", TypeSettings = [Kind = "Table"]]]}]
 shared employed_pop_by_status_in_employment_by_age_area = let
   Source = Lakehouse.Contents(null),

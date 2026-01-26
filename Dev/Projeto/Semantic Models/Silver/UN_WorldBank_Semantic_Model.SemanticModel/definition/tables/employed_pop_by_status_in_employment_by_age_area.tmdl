@@ -1,11 +1,11 @@
-table pop_age_sex_urban_rural
-	lineageTag: 6711d09b-d021-423d-801d-22847658ad81
-	sourceLineageTag: [dbo].[pop_age_sex_urban_rural]
+table employed_pop_by_status_in_employment_by_age_area
+	lineageTag: c6effd23-d220-425d-8ff5-16aeea7f8e10
+	sourceLineageTag: [dbo].[employed_pop_by_status_in_employment_by_age_area]
 
 	column ID
 		dataType: int64
 		formatString: 0
-		lineageTag: efe070b2-959f-4618-92a2-612443d7d110
+		lineageTag: c1b0119a-d38c-48fe-a910-cbf9139a2b98
 		sourceLineageTag: ID
 		summarizeBy: count
 		sourceColumn: ID
@@ -13,18 +13,21 @@ table pop_age_sex_urban_rural
 		annotation SummarizationSetBy = Automatic
 
 	column Country_or_Area_Code
-		dataType: string
-		lineageTag: e8da8551-0e5e-4147-8595-c84721d5d951
+		dataType: int64
+		formatString: 0
+		lineageTag: 29d4822e-a26a-4d40-a829-eb97802220d2
 		sourceLineageTag: Country_or_Area_Code
 		summarizeBy: none
 		sourceColumn: Country_or_Area_Code
+
+		changedProperty = DataType
 
 		annotation SummarizationSetBy = Automatic
 
 	column Year
 		dataType: int64
 		formatString: 0
-		lineageTag: 07c3d775-8851-4443-80b8-ca9a717c7fad
+		lineageTag: 6580b083-7dbe-442f-bae2-e97767283ca0
 		sourceLineageTag: Year
 		summarizeBy: sum
 		sourceColumn: Year
@@ -34,9 +37,9 @@ table pop_age_sex_urban_rural
 	column Area_Code
 		dataType: int64
 		formatString: 0
-		lineageTag: b7234a7f-6516-43ec-b693-60aede0e839e
+		lineageTag: f6b1f049-288e-461e-8b00-915c16532a8d
 		sourceLineageTag: Area_Code
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: Area_Code
 
 		annotation SummarizationSetBy = Automatic
@@ -44,26 +47,35 @@ table pop_age_sex_urban_rural
 	column Sex_Code
 		dataType: int64
 		formatString: 0
-		lineageTag: 84a38dc0-54ff-4f22-a15b-68d6ae695cac
+		lineageTag: 4255e40a-d228-4f73-8287-468bc5956691
 		sourceLineageTag: Sex_Code
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: Sex_Code
 
 		annotation SummarizationSetBy = Automatic
 
-	column Code_of_Age
+	column Age
+		dataType: string
+		lineageTag: 9e511a60-8875-4308-8868-cef615e7f596
+		sourceLineageTag: Age
+		summarizeBy: none
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column Code_of_Status_in_employment
 		dataType: int64
 		formatString: 0
-		lineageTag: 2376e53c-cda4-4c53-b741-a99ff738d5c9
-		sourceLineageTag: Code_of_Age
-		summarizeBy: sum
-		sourceColumn: Code_of_Age
+		lineageTag: 524a4af4-f660-4f97-b55d-28312ef100bf
+		sourceLineageTag: Code_of_Status_in_employment
+		summarizeBy: none
+		sourceColumn: Code_of_Status_in_employment
 
 		annotation SummarizationSetBy = Automatic
 
 	column Value
 		dataType: double
-		lineageTag: 2d83a962-36b4-486e-9487-4a225eaec63e
+		lineageTag: 20e952c9-ef63-40c9-8a75-19d06598cca6
 		sourceLineageTag: Value
 		summarizeBy: sum
 		sourceColumn: Value
@@ -72,10 +84,10 @@ table pop_age_sex_urban_rural
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	partition pop_age_sex_urban_rural = entity
+	partition employed_pop_by_status_in_employment_by_age_area = entity
 		mode: directLake
 		source
-			entityName: pop_age_sex_urban_rural
+			entityName: employed_pop_by_status_in_employment_by_age_area
 			schemaName: dbo
 			expressionSource: 'DirectLake - Silver_LakeHouse'
 

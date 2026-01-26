@@ -10,7 +10,7 @@ annotation PBI_QueryOrder = ["DirectLake - Silver_LakeHouse"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb"]
+annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb","WebModelingEdit"]
 
 ref table employed_pop_by_status_in_employment_by_age_area
 ref table electricity_access_and_consumption
@@ -22,4 +22,10 @@ ref table pop_age_sex_urban_rural
 ref table unemployment_rate
 ref table school_attendance_urban_rural_5to24
 ref table pop_attainment_demographics_15plus
+ref table 'Dim_Database employment_status_dimension'
+ref table 'Dim_Database school_attendance_dimension'
+ref table 'Dim_Database education_attainment_15plus_dimension'
+ref table Dim_geography
+ref table 'Dim_Database sex_dimension'
+ref table 'Dim_Database area_dimension'
 

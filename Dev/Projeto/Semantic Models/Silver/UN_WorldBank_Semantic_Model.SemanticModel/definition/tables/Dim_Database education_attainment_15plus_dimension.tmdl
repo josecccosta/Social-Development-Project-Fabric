@@ -1,0 +1,30 @@
+table 'Dim_Database education_attainment_15plus_dimension'
+	lineageTag: 641ed2c1-e646-43c2-82ac-75377ebfeed5
+	sourceLineageTag: [dbo].[Dim_Database education_attainment_15plus_dimension]
+
+	column Code_of_Educational_attainment
+		dataType: int64
+		formatString: 0
+		lineageTag: 493e17e1-3a93-438a-9ebd-9e64951010ae
+		sourceLineageTag: Code_of_Educational_attainment
+		summarizeBy: none
+		sourceColumn: Code_of_Educational_attainment
+
+		annotation SummarizationSetBy = Automatic
+
+	column Educational_attainment
+		dataType: string
+		lineageTag: 959eeee8-b9b5-4451-8142-f1c245da7828
+		sourceLineageTag: Educational_attainment
+		summarizeBy: none
+		sourceColumn: Educational_attainment
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim_Database education_attainment_15plus_dimension' = entity
+		mode: directLake
+		source
+			entityName: Dim_Database education_attainment_15plus_dimension
+			schemaName: dbo
+			expressionSource: 'DirectLake - Silver_LakeHouse'
+

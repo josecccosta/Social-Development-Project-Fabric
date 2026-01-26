@@ -12,12 +12,14 @@ table educational_attainment_global_pct_by_se
 
 		annotation SummarizationSetBy = Automatic
 
-	column Country
+	column Country_Code
 		dataType: string
 		lineageTag: a236fd39-ae73-4d56-ace6-488abdd062fd
 		sourceLineageTag: Country
 		summarizeBy: none
 		sourceColumn: Country
+
+		changedProperty = Name
 
 		annotation SummarizationSetBy = Automatic
 

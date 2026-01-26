@@ -1,15 +1,6 @@
 [DefaultOutputDestinationSettings = [DestinationDefinition = [Kind = "Reference", QueryName = "DefaultDestination", IsNewTarget = true], UpdateMethod = [Kind = "Replace"], DestinationTypeSettings = [Kind = "Table"]], StagingDefinition = [Kind = "FastCopy"]]
 section Section1;
 shared DefaultDestination = Lakehouse.Contents([EnableFolding = false]){[workspaceId = "d83c184e-82f0-4705-952c-0e29c5cb5274"]}[Data]{[lakehouseId = "2040f8e7-720b-4901-acd5-9b9c700b12af"]}[Data];
-[DataDestinations = {[Definition = [Kind = "Reference", QueryName = "Reference_Database age_dimension_DataDestination", IsNewTarget = true], Settings = [Kind = "Automatic", TypeSettings = [Kind = "Table"]]]}]
-shared #"Reference_Database age_dimension" = let
-  Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "d83c184e-82f0-4705-952c-0e29c5cb5274"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "2040f8e7-720b-4901-acd5-9b9c700b12af"]}[Data],
-  #"Navigation 2" = #"Navigation 1"{[Id = "Reference_Database.age_dimension", ItemKind = "Table"]}[Data],
-  #"Marked key columns" = Table.AddKey(#"Navigation 2", {"Code_of_Age"}, false)
-in
-  #"Marked key columns";
 [DataDestinations = {[Definition = [Kind = "Reference", QueryName = "Reference_Database area_dimension_DataDestination", IsNewTarget = true], Settings = [Kind = "Automatic", TypeSettings = [Kind = "Table"]]]}]
 shared #"Reference_Database area_dimension" = let
   Source = Lakehouse.Contents(null),
@@ -69,13 +60,6 @@ shared #"Reference_Database sex_dimension" = let
   #"Marked key columns" = Table.AddKey(#"Navigation 2", {"Sex_Code"}, false)
 in
   #"Marked key columns";
-shared #"Reference_Database age_dimension_DataDestination" = let
-  Pattern = Lakehouse.Contents([CreateNavigationProperties = false, EnableFolding = false]),
-  Navigation_1 = Pattern{[workspaceId = "d83c184e-82f0-4705-952c-0e29c5cb5274"]}[Data],
-  Navigation_2 = Navigation_1{[lakehouseId = "e003063b-04a8-42a0-8e85-b0243d356adb"]}[Data],
-  TableNavigation = Navigation_2{[Id = "Dim_Database age_dimension", ItemKind = "Table"]}?[Data]?
-in
-  TableNavigation;
 shared #"Reference_Database area_dimension_DataDestination" = let
   Pattern = Lakehouse.Contents([CreateNavigationProperties = false, EnableFolding = false]),
   Navigation_1 = Pattern{[workspaceId = "d83c184e-82f0-4705-952c-0e29c5cb5274"]}[Data],

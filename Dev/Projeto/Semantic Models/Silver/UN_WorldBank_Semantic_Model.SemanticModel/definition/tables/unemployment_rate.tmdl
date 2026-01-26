@@ -13,11 +13,14 @@ table unemployment_rate
 		annotation SummarizationSetBy = Automatic
 
 	column Country_or_Area_Code
-		dataType: string
+		dataType: int64
+		formatString: 0
 		lineageTag: f90d77ca-16d9-4339-a38d-4b551a916d53
 		sourceLineageTag: Country_or_Area_Code
 		summarizeBy: none
 		sourceColumn: Country_or_Area_Code
+
+		changedProperty = DataType
 
 		annotation SummarizationSetBy = Automatic
 

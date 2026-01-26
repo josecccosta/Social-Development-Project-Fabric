@@ -22,8 +22,8 @@
       {
         "type": "TridentNotebook",
         "typeProperties": {
-          "notebookId": "1e7371c0-9f41-930b-44da-624deb272947",
-          "workspaceId": "00000000-0000-0000-0000-000000000000"
+          "notebookId": "eb272947-624d-44da-930b-9f411e7371c0",
+          "workspaceId": "d83c184e-82f0-4705-952c-0e29c5cb5274"
         },
         "policy": {
           "timeout": "0.12:00:00",
@@ -33,6 +33,8 @@
           "secureOutput": false
         },
         "name": "Reference_Tables_from_the_UN_Census",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "UN Census_Create_Delta_Tables_Bronze_Layer",
@@ -45,8 +47,8 @@
       {
         "type": "RefreshDataflow",
         "typeProperties": {
-          "dataflowId": "e7343847-a7b9-8be2-4670-d7cf57d159b4",
-          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "dataflowId": "57d159b4-d7cf-4670-8be2-a7b9e7343847",
+          "workspaceId": "d83c184e-82f0-4705-952c-0e29c5cb5274",
           "notifyOption": "NoNotification",
           "dataflowType": "DataflowFabric"
         },
@@ -58,9 +60,36 @@
           "secureOutput": false
         },
         "name": "UN_Census_Data_Clean_Up_Silver_Layer",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "Reference_Tables_from_the_UN_Census",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "bf8c3f5b-69e7-ad3d-4ddb-401af7796ab8",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Dimension_Tables_Clean_Up_Silver_Layer",
+        "dependsOn": [
+          {
+            "activity": "UN_Census_Data_Clean_Up_Silver_Layer",
             "dependencyConditions": [
               "Succeeded"
             ]

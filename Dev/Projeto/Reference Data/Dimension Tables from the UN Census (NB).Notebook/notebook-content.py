@@ -51,23 +51,25 @@
 
 # CELL ********************
 
-# MAGIC %%sql
-# MAGIC DROP TABLE IF EXISTS Reference_Database.Age_Dimension;
-# MAGIC 
-# MAGIC CREATE TABLE Reference_Database.Age_Dimension AS
-# MAGIC SELECT DISTINCT 
-# MAGIC     Code_of_Age, 
-# MAGIC     Age
-# MAGIC FROM UN_Census_Demographic_Statistics_Database.pop_age_sex_urban_rural
-# MAGIC WHERE Code_of_Age IS NOT NULL 
-# MAGIC   AND Age NOT LIKE '%-%' 
-# MAGIC   AND Age IS NOT NULL
-# MAGIC ORDER BY Code_of_Age DESC;
+"""
+%%sql
+DROP TABLE IF EXISTS Reference_Database.Age_Dimension;
+
+CREATE TABLE Reference_Database.Age_Dimension AS
+SELECT DISTINCT 
+    Code_of_Age, 
+    Age
+FROM UN_Census_Demographic_Statistics_Database.pop_age_sex_urban_rural
+WHERE Code_of_Age IS NOT NULL 
+  AND Age NOT LIKE '%-%' 
+  AND Age IS NOT NULL
+ORDER BY Code_of_Age DESC;
+"""
 
 # METADATA ********************
 
 # META {
-# META   "language": "sparksql",
+# META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
 

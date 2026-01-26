@@ -13,11 +13,14 @@ table school_attendance_urban_rural_5to24
 		annotation SummarizationSetBy = Automatic
 
 	column Country_or_Area_Code
-		dataType: string
+		dataType: int64
+		formatString: 0
 		lineageTag: 4c0a10b3-541e-4054-a7ae-23f73ea24cea
 		sourceLineageTag: Country_or_Area_Code
 		summarizeBy: none
 		sourceColumn: Country_or_Area_Code
+
+		changedProperty = DataType
 
 		annotation SummarizationSetBy = Automatic
 
@@ -36,7 +39,7 @@ table school_attendance_urban_rural_5to24
 		formatString: 0
 		lineageTag: 074ecf16-d3f4-412b-bf4e-1ba77e7de25b
 		sourceLineageTag: Area_Code
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: Area_Code
 
 		annotation SummarizationSetBy = Automatic
@@ -46,7 +49,7 @@ table school_attendance_urban_rural_5to24
 		formatString: 0
 		lineageTag: 948121a2-ea08-4388-8200-604d3602ccdc
 		sourceLineageTag: Sex_Code
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: Sex_Code
 
 		annotation SummarizationSetBy = Automatic
@@ -65,7 +68,7 @@ table school_attendance_urban_rural_5to24
 		formatString: 0
 		lineageTag: cfc2d418-f9e0-4b25-8ac9-c6be0ed5f4d8
 		sourceLineageTag: Code_of_School_attendance
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Code_of_School_attendance
 
 		annotation SummarizationSetBy = Automatic

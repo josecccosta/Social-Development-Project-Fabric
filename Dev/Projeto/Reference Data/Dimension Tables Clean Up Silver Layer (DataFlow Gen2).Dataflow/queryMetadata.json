@@ -11,11 +11,6 @@
       "isHidden": true,
       "loadEnabled": false
     },
-    "Reference_Database age_dimension": {
-      "queryId": "353b3e4c-f369-44f3-ad3b-e2be1640b934",
-      "queryName": "Reference_Database age_dimension",
-      "loadEnabled": false
-    },
     "Reference_Database area_dimension": {
       "queryId": "aa4f2996-ef0a-439f-84a0-8a57dc67dc83",
       "queryName": "Reference_Database area_dimension",
@@ -44,12 +39,6 @@
     "Reference_Database sex_dimension": {
       "queryId": "bdc43f81-dfd1-4dc7-aca7-8ddeee5777c1",
       "queryName": "Reference_Database sex_dimension",
-      "loadEnabled": false
-    },
-    "Reference_Database age_dimension_DataDestination": {
-      "queryId": "f71c939e-dfeb-49fc-b42b-4ffb632a80b0",
-      "queryName": "Reference_Database age_dimension_DataDestination",
-      "isHidden": true,
       "loadEnabled": false
     },
     "Reference_Database area_dimension_DataDestination": {

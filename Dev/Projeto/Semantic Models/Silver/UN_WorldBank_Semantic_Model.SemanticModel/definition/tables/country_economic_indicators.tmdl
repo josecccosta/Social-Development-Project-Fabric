@@ -12,12 +12,14 @@ table country_economic_indicators
 
 		annotation SummarizationSetBy = Automatic
 
-	column Country
+	column Country_Code
 		dataType: string
 		lineageTag: 6ff89684-ce23-4c7e-a9fc-158f56464938
 		sourceLineageTag: Country
 		summarizeBy: none
 		sourceColumn: Country
+
+		changedProperty = Name
 
 		annotation SummarizationSetBy = Automatic
 

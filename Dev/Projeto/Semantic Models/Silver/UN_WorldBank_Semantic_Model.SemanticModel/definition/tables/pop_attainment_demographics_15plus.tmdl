@@ -13,11 +13,14 @@ table pop_attainment_demographics_15plus
 		annotation SummarizationSetBy = Automatic
 
 	column Country_or_Area_Code
-		dataType: string
+		dataType: int64
+		formatString: 0
 		lineageTag: 296fcf35-b2ce-41bb-aa56-9c65a278edde
 		sourceLineageTag: Country_or_Area_Code
 		summarizeBy: none
 		sourceColumn: Country_or_Area_Code
+
+		changedProperty = DataType
 
 		annotation SummarizationSetBy = Automatic
 
@@ -36,7 +39,7 @@ table pop_attainment_demographics_15plus
 		formatString: 0
 		lineageTag: dc42a0f9-bb41-43c9-bc04-39fe0dac92a5
 		sourceLineageTag: Area_Code
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: Area_Code
 
 		annotation SummarizationSetBy = Automatic
@@ -65,7 +68,7 @@ table pop_attainment_demographics_15plus
 		formatString: 0
 		lineageTag: 336093c4-ae8a-4e48-85c2-95eabfbdb443
 		sourceLineageTag: Code_of_Educational_attainment
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Code_of_Educational_attainment
 
 		annotation SummarizationSetBy = Automatic
