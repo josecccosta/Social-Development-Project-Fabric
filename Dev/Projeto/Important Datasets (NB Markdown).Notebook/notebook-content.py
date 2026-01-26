@@ -65,73 +65,37 @@
 
 # MARKDOWN ********************
 
-# # 3. Necessary data
+# # Pergunta principal
+# 
+# - Desigualdade Social
 
 # MARKDOWN ********************
 
-# ## 3.1. Economic & Employment Data
-#  
-# - Macroeconomic Indicators: [x]
-#     - GDP growth (% annual) [x]
-#     - GDP per capita [x]
-#     - Standard deviation of GDP growth (volatility) [x]
-#     - inflation  [x]
-#     - GDP (PPP) [x]
+# # 3. Necessary data
 # 
-# - Wages (average or median) [?]
+# - Nível 1: Diagnóstico (Onde e Quanto?)
+#     Estas perguntas servem para situar o utilizador e dar o contexto global.
 # 
-# - Employment Table:
-#     - employment rate (%) [x]
-#     - employement rate male (%) [x]
-#     - employement rate female (%) [x]
-#     - % Self-employed [x]
-#     - % Contributing family workers [x]
-#     - Unemployment rate (%) [x]
-#     - Unemployment rate male (%) [x]
-#     - Unemployment rate female (%) [x]
+#     - Distribuição Global: Como variam o Coeficiente de Gini e o Índice de Desenvolvimento Humano (IDH) entre os diferentes continentes na última década?
 # 
-# - Labor participation by: [x]
-#     - Sex (male/female) [x]
-#     - Age groups (youth, 55+ etc.) [x]
+#     - Os Extremos: Quais são os 10 países onde a riqueza está mais concentrada no 1% topo da população e como isso se compara com a média global? 
 # 
-# - Job stability (if available)
+#     - Evolução Temporal: A desigualdade de rendimento diminuiu ou aumentou em países que tiveram um crescimento acelerado do PIB? (O crescimento foi inclusivo?) 
 # 
-# - Gini coefficient (inequality measure) [x]
+# - Nível 2: Causas e Barreiras (Porquê?)
+#     Aqui começas a cruzar os dados da ONU e do Banco Mundial para encontrar correlações.
 # 
-# - Economic shocks / crisis impact: 
-#     - Employment rate during crises (2008, COVID)
-#     - Recovery speed (employment and GDP growth after crisis)
+#     - Educação vs. Rendimento: Existe uma correlação estatística forte entre os gastos públicos em educação secundária (Banco Mundial) e a redução da desigualdade a longo prazo (ONU)?
 # 
-# ## 3.2. Population & Demographics
+#     - O Gap Digital: Em que medida o acesso desigual à internet (infraestrutura) está a criar novas formas de desigualdade social em economias emergentes?
 # 
-# - Demographic Indicators: [x]
-#     - Total population over time [x]
-#     - Population growth rate [x]
-#     - Immigrants [x]
-#     - Emigrants [x] 
+#     - Género e Economia: Qual é o impacto da exclusão financeira das mulheres (acesso a contas bancárias/crédito) nos índices de pobreza nacional?
 # 
-# - Age,sex demographics: [x]
-#     - Population by age group [x]
-#     - Population by sex [x]
-#     
-# -Fertility rate [x]
+# - Nível 3: Preditivo e Protetivo (E agora?)
+#     Estas perguntas são ideais para usar as ferramentas de IA do Fabric e Power BI (como o Key Influencers ou Forecasting).
 # 
-# -Mortality rate (optional) 
-# 
-# 
-# ## 3.3 Education Data
-# - Population by education level (secondary or higher) [x]
-# 
-# Education by sex [x]
-# - Female education levels (specific) [x]
-# - Male education levels (optional) [x]
-# 
-# ## 3.4 Energy / Electricity Data
-# 
-# - Eletricity: [x]
-#     - Population with access to electricity [x]
-#     - Total electricity consumption [x]
-#     - Per capita electricity consumption (derived from above) [x]
+#     - Fatores Determinantes: Quais são os 3 principais fatores (ex: inflação, literacia, urbanização) que mais "empurram" um país para um aumento da desigualdade?
+#     - Resiliência a Crises: Países com sistemas de proteção social mais robustos (dados da ONU) recuperaram mais rápido da desigualdade gerada por choques económicos (ex: 2008 ou Pandemia)?
 
 
 # MARKDOWN ********************

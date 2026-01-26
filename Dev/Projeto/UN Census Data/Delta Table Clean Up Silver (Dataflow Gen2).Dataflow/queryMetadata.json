@@ -1,0 +1,72 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "UN Census Delta Table Clean Up Silver (Dataflow Gen2)",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "other human_development_index": {
+      "queryId": "87c9827c-6571-470b-af48-2c91fe554817",
+      "queryName": "other human_development_index"
+    },
+    "other income_share_distribution": {
+      "queryId": "0a9563c0-e3d1-4f6a-a5af-393286d1224e",
+      "queryName": "other income_share_distribution"
+    },
+    "other income_share_top_1": {
+      "queryId": "efc33164-473b-4bb5-ac5f-14ccbdee8ca3",
+      "queryName": "other income_share_top_1"
+    },
+    "other income_share_top_10": {
+      "queryId": "781e6bb6-f7be-49a3-aee6-715cd8dc823c",
+      "queryName": "other income_share_top_10"
+    },
+    "other multidimensional_poverty_index": {
+      "queryId": "3a3b7e0c-e664-4403-b2cb-9c519475ae7e",
+      "queryName": "other multidimensional_poverty_index"
+    },
+    "un_census attainment_15plus": {
+      "queryId": "9a6e0202-789f-4015-b257-c5f7382fa4a4",
+      "queryName": "un_census attainment_15plus"
+    },
+    "un_census employed_population_by_status_in_employment_age_and_sex": {
+      "queryId": "db284062-9d67-431a-a75b-426902ab926f",
+      "queryName": "un_census employed_population_by_status_in_employment_age_and_sex"
+    },
+    "un_census gini_index": {
+      "queryId": "de599220-76ad-4645-9c40-a98f4e089676",
+      "queryName": "un_census gini_index"
+    },
+    "un_census monthly_employee_earnings": {
+      "queryId": "06da1d41-314a-4459-ab22-0257f3467534",
+      "queryName": "un_census monthly_employee_earnings"
+    },
+    "un_census pop_age_sex_urban_rural": {
+      "queryId": "0015ba22-4317-435e-8f2e-2ff0035bcd4c",
+      "queryName": "un_census pop_age_sex_urban_rural"
+    },
+    "un_census school_attendance": {
+      "queryId": "e337d4a9-b519-4a56-a7af-dbfb44c090fa",
+      "queryName": "un_census school_attendance"
+    },
+    "un_census unemployment_rate": {
+      "queryId": "aba4ea48-b5c0-4138-95c0-fa023aaa7ead",
+      "queryName": "un_census unemployment_rate"
+    },
+    "Reference_Database geography_dimension": {
+      "queryId": "28ac0c91-ccc9-4e02-8be5-e66fa09cb47c",
+      "queryName": "Reference_Database geography_dimension"
+    },
+    "un_census global_total_eletricity": {
+      "queryId": "6cd6d7d6-3dfe-48d7-9676-6bc75392d96e",
+      "queryName": "un_census global_total_eletricity"
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"859c4984-5e67-4c66-ab4f-8c7ba10be907\",\"DatasourceId\":\"a4fff1ff-8d27-4fff-9474-a34d3bee5364\"}"
+    }
+  ]
+}

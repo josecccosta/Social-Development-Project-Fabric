@@ -35,7 +35,7 @@
 # MAGIC 
 # MAGIC CREATE TABLE Reference_Database.Sex_Dimension AS
 # MAGIC SELECT DISTINCT Sex_Code, Sex 
-# MAGIC FROM UN_Census_Demographic_Statistics_Database.pop_age_sex_urban_rural
+# MAGIC FROM un_census.pop_age_sex_urban_rural
 # MAGIC WHERE Sex_Code IS NOT NULL;
 
 # METADATA ********************
@@ -86,7 +86,7 @@ ORDER BY Code_of_Age DESC;
 # MAGIC SELECT DISTINCT 
 # MAGIC     Area_Code, 
 # MAGIC     Area
-# MAGIC FROM UN_Census_Demographic_Statistics_Database.pop_age_sex_urban_rural
+# MAGIC FROM un_census.pop_age_sex_urban_rural
 # MAGIC WHERE Area_Code IS NOT NULL
 # MAGIC ORDER BY Area_Code ASC;
 
@@ -99,7 +99,7 @@ ORDER BY Code_of_Age DESC;
 
 # MARKDOWN ********************
 
-# ## (1.4) Employement Status Dimension
+# ## (1.4) Employment Status Dimension
 
 # CELL ********************
 
@@ -110,7 +110,7 @@ ORDER BY Code_of_Age DESC;
 # MAGIC SELECT DISTINCT 
 # MAGIC     Code_of_Status_in_employment, 
 # MAGIC     Status_in_employment
-# MAGIC FROM UN_Census_Economic_Statistics_Database.employed_population_by_status_in_employment_age_and_sex
+# MAGIC FROM un_census.employed_population_by_status_in_employment_age_and_sex
 # MAGIC WHERE Code_of_Status_in_employment IS NOT NULL 
 # MAGIC   AND Status_in_employment IS NOT NULL
 # MAGIC ORDER BY Code_of_Status_in_employment ASC;
@@ -129,13 +129,13 @@ ORDER BY Code_of_Age DESC;
 # CELL ********************
 
 # MAGIC %%sql
-# MAGIC DROP TABLE IF EXISTS Reference_Database.Education_Attainment_15plus_Dimension;
+# MAGIC DROP TABLE IF EXISTS Reference_Database.Attainment_Status_Dimension;
 # MAGIC 
-# MAGIC CREATE TABLE Reference_Database.Education_Attainment_15plus_Dimension AS
+# MAGIC CREATE TABLE Reference_Database.Attainment_Status_Dimension AS
 # MAGIC SELECT DISTINCT 
 # MAGIC     Code_of_Educational_attainment, 
 # MAGIC     Educational_attainment
-# MAGIC FROM UN_Census_Education_Statistics_Database.pop_attainment_demographics_15plus
+# MAGIC FROM un_census.attainment_15plus
 # MAGIC WHERE Code_of_Educational_attainment IS NOT NULL 
 # MAGIC   AND Educational_attainment IS NOT NULL
 # MAGIC ORDER BY Code_of_Educational_attainment ASC;
@@ -160,7 +160,7 @@ ORDER BY Code_of_Age DESC;
 # MAGIC SELECT DISTINCT 
 # MAGIC     Code_of_School_attendance, 
 # MAGIC     School_attendance
-# MAGIC FROM UN_Census_Education_Statistics_Database.school_attendance_urban_rural_5to24
+# MAGIC FROM un_census.school_attendance
 # MAGIC WHERE Code_of_School_attendance IS NOT NULL 
 # MAGIC   AND School_attendance IS NOT NULL
 # MAGIC ORDER BY Code_of_School_attendance ASC;

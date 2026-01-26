@@ -47,15 +47,11 @@ df_merged = spark.read.format("csv").option("header", "true").option("inferSchem
 new_columns = [col(c).alias(c.replace(' ', '_').replace(',', '').replace('(', '').replace(')', '')) for c in df_merged.columns]
 df_clean = df_merged.select(*new_columns)
 
-# Now save it
-target_table_name = "pop_attainment_demographics_15plus"
-df_clean.write.format("delta").mode("overwrite").saveAsTable(target_table_name)
-
-schema = "UN_Census_Education_Statistics_Database"
+schema = "un_census"
 spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema}")
 
 # 3. Save to a Delta Table
-target_table_name = "pop_attainment_demographics_15plus"
+target_table_name = "attainment_15plus"
 df_clean.write.format("delta").mode("overwrite").saveAsTable(f"{schema}.{target_table_name}")
 
 print(f"Merge complete! All files combined into table: {target_table_name}")
@@ -75,11 +71,8 @@ df_merged = spark.read.format("csv").option("header", "true").option("inferSchem
 new_columns = [col(c).alias(c.replace(' ', '_').replace(',', '').replace('(', '').replace(')', '')) for c in df_merged.columns]
 df_clean = df_merged.select(*new_columns)
 
-schema = "UN_Census_Education_Statistics_Database"
-spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema}")
-
 # 3. Save to a Delta Table
-target_table_name = "school_attendance_urban_rural_5to24"
+target_table_name = "school_attendance"
 df_clean.write.format("delta").mode("overwrite").saveAsTable(f"{schema}.{target_table_name}")
 
 print(f"Merge complete! All files combined into table: {target_table_name}")
@@ -106,6 +99,7 @@ from pyspark.sql.functions import col
 
 # Define the folder path
 folder_path = "Files/Demographic Statistics Database/Population by age, sex and urbanrural residence/*.csv"
+schema = "un_census"
 
 # Load your data
 df_merged = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load(folder_path)
@@ -113,9 +107,6 @@ df_merged = spark.read.format("csv").option("header", "true").option("inferSchem
 # Automatically replace spaces and invalid characters in ALL column names
 new_columns = [col(c).alias(c.replace(' ', '_').replace(',', '').replace('(', '').replace(')', '')) for c in df_merged.columns]
 df_clean = df_merged.select(*new_columns)
-
-schema = "UN_Census_Demographic_Statistics_Database"
-spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema}")
 
 # 3. Save to a Delta Table
 target_table_name = "pop_age_sex_urban_rural"
@@ -140,16 +131,15 @@ print(f"Merge complete! All files combined into table: {target_table_name}")
 ## (1) Employed population by status in employment, age and sex.csv
 ## (2) Gini index
 ## (3) Unemployment rate
+## (4) Monthly employee earnings
 ## -------------------------------------------------------------------------------------
 
 import os
+import re
 
 # 1. Define the directory path
 input_path = "Files/Economic Statistics Database"
-schema = "UN_Census_Economic_Statistics_Database"
-
-# Create the database if it doesn't exist
-spark.sql(f"CREATE DATABASE IF NOT EXISTS {schema}")
+schema = "un_census"
 
 # 2. List files using mssparkutils
 # This returns a list of objects with .path and .name attributes
@@ -201,6 +191,7 @@ from pyspark.sql.functions import col
 
 # Define the folder path
 folder_path = "Files/Development Statistics Database/Total Electricity/*.csv"
+schema = "un_census" 
 
 # Load your data
 df_merged = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load(folder_path)
@@ -209,14 +200,72 @@ df_merged = spark.read.format("csv").option("header", "true").option("inferSchem
 new_columns = [col(c).alias(c.replace(' ', '_').replace(',', '').replace('(', '').replace(')', '')) for c in df_merged.columns]
 df_clean = df_merged.select(*new_columns)
 
-schema = "UN_Census_Development_Statistics_Database"
-spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema}")
-
 # 3. Save to a Delta Table
 target_table_name = "global_total_eletricity"
 df_clean.write.format("delta").mode("overwrite").saveAsTable(f"{schema}.{target_table_name}")
 
 print(f"Merge complete! All files combined into table: {target_table_name}")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# # (2) Create Delta Tables for the Data from other sources for the Bronze Layer
+
+# MARKDOWN ********************
+
+# ## (2.1) Wealth Inequality
+
+# CELL ********************
+
+## -------------------------------------------------------------------------------------
+## (1) human development index
+## (2) income share distribution (bottom 50%)
+## (3) income share top 1%
+## (4) income share top 10%
+## (5) multidimensional poverty index
+## -------------------------------------------------------------------------------------
+
+import os
+import re
+
+# 1. Define the directory path
+input_path = "Files/Development Statistics Database/Wealth Inequality/"
+schema = "other"
+spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema}")
+
+# 2. List files using mssparkutils
+# This returns a list of objects with .path and .name attributes
+files = mssparkutils.fs.ls(input_path)
+
+for file in files:
+    if file.name.endswith(".csv"):
+        base_name = file.name.rsplit('.', 1)[0]
+        clean_name = re.sub(r'[^a-zA-Z0-9]', '_', base_name)
+        table_name = re.sub(r'_+', '_', clean_name).lower().strip('_')
+        
+        print(f"Processing: {file.name} -> Table: {table_name}")
+        
+        df = (spark.read
+              .option("header", "true")
+              .option("inferSchema", "true")
+              .csv(file.path))
+        
+        # --- NEW: CLEAN COLUMN NAMES ---
+        # This replaces spaces, dots, and other bad characters in column headers
+        for col_name in df.columns:
+            clean_col = re.sub(r'[ ,;{}()\n\t=]', '_', col_name)
+            df = df.withColumnRenamed(col_name, clean_col)
+        # -------------------------------
+        
+        df.write.format("delta").mode("overwrite").saveAsTable(f"{schema}.{table_name}")
+
+print("Success! All CSVs are now Delta tables with clean columns.")
 
 # METADATA ********************
 

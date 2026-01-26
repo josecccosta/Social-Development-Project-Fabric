@@ -1,11 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Dataflow",
-    "displayName": "World Bank Data Clean Up Silver Layer (DataFlow Gen2)"
+    "type": "Environment",
+    "displayName": "Wgapi",
+    "description": "Environment"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "c5b3b41a-d60e-9931-434c-5dd5057d343a"
+    "logicalId": "10c4d00b-2c47-88c7-4f76-b00347d57f02"
   }
 }

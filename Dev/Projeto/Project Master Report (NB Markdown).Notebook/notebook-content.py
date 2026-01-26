@@ -34,12 +34,25 @@
 
 # ## 2. Data Sources
 # + **UN Census Data** (for demographic information): 
-#   + This dataset provides the "human" foundation of the project. It contains detailed demographic information collected directly from national authorities, including age distribution, sex ratios, literacy rates, and urban vs. rural living 
-#   conditions. It tells us who the people are and where they live (often provided in 10-year intervals).
-#   + https://unstats.un.org/unsd/demographic-social/products/dyb/dybcensusdata.cshtml
+#   + This dataset provides the "human" foundation of the project. It contains detailed demographic information collected directly from national authorities, including age distribution, sex ratios, literacy rates, and urban vs. rural living. 
+#   + http://data.un.org/Explorer.aspx
+# 
 # + **World Bank Global Development data**:
 #   + This dataset provides the "contextual" layer. Known as World Development Indicators (WDI), it includes annual metrics on GDP growth, life expectancy, poverty headcount, and labor force participation. It tells us how a country is performing economically and socially on the global stage (often provided in 1-year intervals).
 #   + https://data.worldbank.org/
+# 
+# + **Our World in Data (OWID):**
+#   + open-access "aggregator" of global data. It is primarily used to track long-term progress and challenges across the globe, from climate change and health to poverty and human rights.
+#   + https://ourworldindata.org/
+# 
+# + **Human Development Reports:**
+#   + Human Development Reports (HDRs) have been released most years since 1990 and have explored different themes through the human development approach.
+#   + https://hdr.undp.org/content/2024-global-multidimensional-poverty-index-mpi
+# 
+# + **ILOSTAT:**
+#   + ILOSTAT is the leading source of international labour statistics, maintained by the International Labour Organization (ILO). It serves as the global reference point for data on the world of work, providing a massive repository of information used by policymakers, researchers, and journalists to track employment trends and social justice.
+#   + https://ilostat.ilo.org/
+
 
 # MARKDOWN ********************
 

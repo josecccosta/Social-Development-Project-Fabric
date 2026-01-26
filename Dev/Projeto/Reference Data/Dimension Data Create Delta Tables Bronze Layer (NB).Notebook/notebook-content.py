@@ -62,7 +62,7 @@ def clean_column_name(name):
 df_cleaned = df_countries.toDF(*[clean_column_name(c) for c in df_countries.columns])
 
 # 3. Save to a Delta Table
-target_table_name = "dim_geography_m49"
+target_table_name = "geography_dimension"
 
 # Added overwriteSchema to force the new, multi-column structure
 df_cleaned.write.format("delta") \

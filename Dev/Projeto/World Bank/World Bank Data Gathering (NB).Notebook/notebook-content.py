@@ -16,6 +16,10 @@
 # META           "id": "2040f8e7-720b-4901-acd5-9b9c700b12af"
 # META         }
 # META       ]
+# META     },
+# META     "environment": {
+# META       "environmentId": "10c4d00b-2c47-88c7-4f76-b00347d57f02",
+# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
 # META     }
 # META   }
 # META }
@@ -23,17 +27,6 @@
 # MARKDOWN ********************
 
 # # (1) Create Delta Tables for the World Bank data for the Bronze Layer
-
-# CELL ********************
-
-%pip install wbgapi 
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
 
 # MARKDOWN ********************
 
@@ -43,11 +36,9 @@
 
 # ### (1.1.1) High-Level Educational Attainment across the global population aged 25 and older. Specifically, it tracks the "highest level of schooling completed" for three distinct tiers of tertiary (higher) education.
 
-# MARKDOWN ********************
-
-
 # CELL ********************
 
+"""
 import wbgapi as wb
 import pandas as pd
 
@@ -56,7 +47,7 @@ countries = 'all'
 
 # 2. Educational indicators (Mapping World Bank codes to readable names)
 edu_indicators = {
-    'SE.TER.CUAT.MS.ZS': 'Master_Total_Pct',
+    'SE.TER.CUAT.MS.FE.ZS': 'Master_Female_Pct',
     'SE.TER.CUAT.MS.MA.ZS': 'Master_Male_Pct',
     'SE.TER.CUAT.ST.MA.ZS': 'Short_Cycle_Male_Pct',
     'SE.TER.CUAT.DO.FE.ZS': 'Doctoral_Female_Pct',
@@ -75,6 +66,8 @@ df_edu = wb.data.DataFrame(
     columns='series'
 )
 
+df_edu = wb.data.DataFrame(list(edu_indicators.keys()), 'cnt', time=range(1980, 2025), columns='series')
+
 # 4. Cleaning and Formatting
 df_edu = df_edu.rename(columns=edu_indicators)
 
@@ -91,7 +84,7 @@ pd.options.display.float_format = '{:,.2f}%'.format
 
 print("Educational Attainment Indicators (Population 25+)")
 
-schema = "World_Bank_Education_Statistics_Database"
+schema = "world_bank"
 spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema}")
 
 # If using PySpark to save the Delta Table
@@ -100,7 +93,8 @@ df_spark = spark.createDataFrame(df_edu)
 df_spark.write.format("delta") \
     .mode("overwrite") \
     .option("description", "Global educational attainment metrics for population 25+ sourced from World Bank API") \
-    .saveAsTable(f"{schema}.educational_attainment_global_pct_by_sex")
+    .saveAsTable(f"{schema}.educational_attainment_pct")
+"""
 
 # METADATA ********************
 
@@ -169,10 +163,10 @@ df_elec = (
 )
 
 # 5. Save to Spark Delta Table
-schema = "World_Bank_Development_Statistics_Database"
-table_name = "electricity_access_and_consumption"
-
+schema = "world_bank"
 spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema}")
+
+table_name = "electricity_access_consumption"
 
 # Create Spark DataFrame
 df_spark = spark.createDataFrame(df_elec)
@@ -253,9 +247,8 @@ df_demo = (
 )
 
 # 5. Save to Spark Delta Table
-schema = "World_Bank_Demographic_Statistics_Database"
-table_name = "population_and_migration_global"
-spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema}")
+schema = "world_bank"
+table_name = "population_migration"
 
 # Create Spark DataFrame
 df_spark = spark.createDataFrame(df_demo)
@@ -317,10 +310,8 @@ df_fertility = (
 )
 
 # 5. Save to Spark Delta Table
-schema = "World_Bank_Demographic_Statistics_Database"
-table_name = "fertility_rates_global"
-
-spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema}")
+schema = "world_bank"
+table_name = "fertility_rates"
 
 # Create Spark DataFrame
 df_spark = spark.createDataFrame(df_fertility)
@@ -354,48 +345,53 @@ print(f"Fertility data successfully saved to {schema}.{table_name}")
 import pandas as pd
 import wbgapi as wb
 
-# 1. Configuration: Map World Bank codes to readable names
+# 1. Configuração: Nomes legíveis e sem caracteres especiais (essencial para Delta Lake)
 econ_map = {
     'NY.GDP.MKTP.CD': 'GDP_USD',
     'NY.GDP.PCAP.CD': 'GDP_Per_Capita',
-    'NY.GDP.MKTP.KD.ZG': 'GDP_Growth_Annual_%',
-    'FP.CPI.TOTL.ZG': 'Inflation_CPI_%',
+    'NY.GDP.MKTP.KD.ZG': 'GDP_Growth_Annual_Pct', # Removido o %
+    'FP.CPI.TOTL.ZG': 'Inflation_CPI_Pct',         # Removido o %
     'NY.GDP.MKTP.PP.CD': 'GDP_PPP'
 }
 
-# 2. Fetch and Clean Data
-# mrv=100 pulls the 100 most recent years of data
-df_econ = wb.data.DataFrame(list(econ_map.keys()), countries, mrv=100, columns='series')
+countries = 'all'
 
+# 2. Recolha de Dados da API
+print("A descarregar dados da API (isto pode demorar 1-2 min)...")
+df_econ = wb.data.DataFrame(list(econ_map.keys()), countries, mrv=40, columns='series')
+
+# 3. Limpeza de Dados (Pandas)
 df_econ = (
     df_econ
     .rename(columns=econ_map)
     .reset_index()
     .rename(columns={'economy': 'Country', 'time': 'Year'})
-    .sort_values(['Country', 'Year'])
-    .reset_index(drop=True)
 )
 
-# 3. Final Formatting
-pd.options.display.float_format = '{:,.3f}'.format
+# CORREÇÃO: Transforma 'YR2020' em 2020 (inteiro). O Spark prefere números a strings.
+df_econ['Year'] = df_econ['Year'].str.replace('YR', '').astype(int)
 
-# 5. Save to Spark Delta Table
-schema = "World_Bank_Economic_Statistics_Database"
-table_name = "country_economic_indicators"
+df_econ = df_econ.sort_values(['Country', 'Year']).reset_index(drop=True)
 
+# 4. Configurações de Destino
+schema = "world_bank"
+table_name = "economic_indicators"
+
+# 5. Garantir que o Esquema existe no Lakehouse antes de gravar
+print(f"A criar/verificar esquema '{schema}'...")
 spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema}")
 
-# Create Spark DataFrame
+# 6. Converter para Spark e Gravar no Delta Lake
+print(f"A gravar a tabela {schema}.{table_name} no Lakehouse...")
 df_spark = spark.createDataFrame(df_econ)
 
-# Write to Delta
 df_spark.write.format("delta") \
     .mode("overwrite") \
     .option("overwriteSchema", "true") \
-    .option("description", "Economic indicators (GDP and inflation indicators) sourced from World Bank API") \
+    .option("description", "Economic indicators sourced from World Bank API") \
     .saveAsTable(f"{schema}.{table_name}")
 
-print(f"Economic indicators data successfully saved to {schema}.{table_name}")
+print(f"Sucesso! Dados guardados em {schema}.{table_name}")
 
 # METADATA ********************
 
@@ -413,65 +409,115 @@ print(f"Economic indicators data successfully saved to {schema}.{table_name}")
 import wbgapi as wb
 import pandas as pd
 
-# 1. Target all countries
+# 1. Configuração
 countries = 'all'
-
-# 2. Employment Indicator Mapping (National Estimates)
-# SL.UEM.TOTL.NE.ZS: Unemployment, total
-# SL.UEM.MAINT.MA.NE.ZS: Unemployment, male
-# SL.UEM.FEINT.FE.NE.ZS: Unemployment, female
 employment_indicators = {
-    # General Unemployment (National Estimates)
     'SL.UEM.TOTL.NE.ZS': 'Unemployment_Total_Pct',
     'SL.UEM.TOTL.MA.NE.ZS': 'Unemployment_Male_Pct',
     'SL.UEM.TOTL.FE.NE.ZS': 'Unemployment_Female_Pct',
-    
-    # Youth Unemployment (Ages 15-24, National Estimates)
     'SL.UEM.1524.NE.ZS': 'Youth_Unemployment_Total_Pct',
     'SL.UEM.1524.MA.NE.ZS': 'Youth_Unemployment_Male_Pct',
     'SL.UEM.1524.FE.NE.ZS': 'Youth_Unemployment_Female_Pct'
 }
 
-# 3. Fetch the data
-# Using mrv=100 to capture recent decades of labor trends
-df_employment = wb.data.DataFrame(
-    list(employment_indicators.keys()), 
-    countries, 
-    mrv=100, 
-    columns='series'
-)
+# 2. Fetch Data (Voltando aos 40 anos)
+print("1. A descarregar 40 anos de dados da API... (Isto pode levar 2-3 min)")
+df_employment = wb.data.DataFrame(list(employment_indicators.keys()), countries, mrv=40, columns='series')
 
-# 4. Cleaning and Formatting
+# 3. Limpeza e Formatação
 df_employment = df_employment.rename(columns=employment_indicators).reset_index()
-
-# Extract Year as integer and clean column names
 df_employment['time'] = df_employment['time'].str.replace('YR', '').astype(int)
+df_employment = df_employment.rename(columns={'economy': 'Country_Code', 'time': 'Year'})
 
-df_employment = (
-    df_employment
+# --- TRATAMENTO PARA O SPARK NÃO TRAVAR ---
+# Converte colunas numéricas para float explicitamente e preenche vazios com None (que o Spark entende como NULL)
+cols_to_fix = list(employment_indicators.values())
+for col in cols_to_fix:
+    df_employment[col] = pd.to_numeric(df_employment[col], errors='coerce')
+
+df_employment = df_employment.sort_values(['Country_Code', 'Year']).reset_index(drop=True)
+
+# 4. Gravação no Delta Table
+schema = "world_bank"
+table_name = "unemployment_rates_global"
+
+print(f"2. A gravar em {schema}.{table_name}...")
+spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema}")
+
+df_spark = spark.createDataFrame(df_employment)
+
+df_spark.write.format("delta") \
+    .mode("overwrite") \
+    .option("overwriteSchema", "true") \
+    .saveAsTable(f"{schema}.{table_name}")
+
+print(f"✓ SUCESSO! Dados de 40 anos guardados em {schema}.{table_name}")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# # Tabelas para as perguntas nivel 2
+
+# CELL ********************
+
+import wbgapi as wb
+import pandas as pd
+
+# 1. Configuração dos indicadores
+# Ajustei os nomes para serem compatíveis com SQL/Delta (sem espaços ou símbolos)
+nivel_2_WB = {
+    'SE.XPD.TOTL.GD.ZS' : 'Gov_Education_Exp_Pct_GDP',
+    'SE.SEC.NENR' : 'School_Enrollment_Secondary_Net_Pct',
+    'IT.NET.USER.ZS' : 'Internet_Usage_Pct_Pop',
+    'SI.POV.DDAY' : 'Poverty_Headcount_Ratio_2_15_Day',
+    'FX.OWN.TOTL.FE.ZS' : 'Account_Ownership_Female_Pct',
+    'WP_time_01.2' : 'Digital_Payments_Past_Year_Female_Pct',
+    'SL.TLF.CACT.FE.ZS' : 'Labor_Force_Participation_Female_Pct'
+}
+
+countries = 'all'
+
+# 2. Recolha de Dados
+print("A descarregar indicadores de desenvolvimento (mrv=40)...")
+df_social = wb.data.DataFrame(list(nivel_2_WB.keys()), countries, mrv=40, columns='series')
+
+# 3. Limpeza e Formatação
+df_social = df_social.rename(columns=nivel_2_WB).reset_index()
+
+# Transformar o ano em Inteiro
+df_social['time'] = df_social['time'].str.replace('YR', '').astype(int)
+
+df_social = (
+    df_social
     .rename(columns={'economy': 'Country_Code', 'time': 'Year'})
     .sort_values(['Country_Code', 'Year'])
     .reset_index(drop=True)
 )
 
-# 5. Save to Spark Delta Table
-schema = "World_Bank_Economic_Statistics_Database"
-table_name = "unemployment_rates_global"
+# 4. Configuração de Destino no Fabric
+schema = "world_bank"
+table_name = "social_development_indicators"
 
-# Initialize Schema
+# Garantir que o esquema existe
 spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema}")
 
-# Create Spark DataFrame
-df_spark = spark.createDataFrame(df_employment)
+# 5. Criar Spark DataFrame e Gravar
+print(f"A gravar a tabela {schema}.{table_name} no Lakehouse...")
+df_spark = spark.createDataFrame(df_social)
 
-# Write to Delta
 df_spark.write.format("delta") \
     .mode("overwrite") \
     .option("overwriteSchema", "true") \
-    .option("description", "Unemployment rates (Total, Male, Female), (Ages 15-24, National Estimates) sourced from World Bank API via national estimates") \
+    .option("description", "Social and education indicators (Gini, Poverty, Education) sourced from World Bank") \
     .saveAsTable(f"{schema}.{table_name}")
 
-print(f"Employment data successfully saved to {schema}.{table_name}")
+print(f"Dados sociais guardados com sucesso em {schema}.{table_name}")
 
 # METADATA ********************
 

@@ -1,11 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Dataflow",
-    "displayName": "Dimension Tables Clean Up Silver Layer (DataFlow Gen2)"
+    "type": "Warehouse",
+    "displayName": "StagingWarehouseForDataflows_20260124141909"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "bf8c3f5b-69e7-ad3d-4ddb-401af7796ab8"
+    "logicalId": "e03fa2d2-f796-aa11-4576-4f241aac1ad6"
   }
 }
