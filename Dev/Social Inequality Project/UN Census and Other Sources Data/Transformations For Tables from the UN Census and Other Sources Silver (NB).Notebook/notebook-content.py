@@ -26,37 +26,7 @@
 
 # MARKDOWN ********************
 
-# # (1.1) Transformations for the unemployment rate
-# 
-# cal
-
-# CELL ********************
-
-# MAGIC %%sql
-# MAGIC INSERT INTO unemployment_rate (Country_Code_Numeric, Year, Value_pct, Sex_Code,Age)
-# MAGIC SELECT 
-# MAGIC     Country_Code_Numeric, 
-# MAGIC     Year,
-# MAGIC     CASE 
-# MAGIC         WHEN COUNT(DISTINCT Sex_Code) = 2 THEN AVG(Value_pct)
-# MAGIC         ELSE MIN(Value_pct)
-# MAGIC     END AS Value_pct,
-# MAGIC     0 AS Sex_Code, -- Identifying these as the new calculated rows
-# MAGIC     '15+' AS Age -- Adding the static age value
-# MAGIC FROM unemployment_rate
-# MAGIC WHERE Sex_Code IN (1, 2)
-# MAGIC GROUP BY Country_Code_Numeric, Year
-
-# METADATA ********************
-
-# META {
-# META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# MARKDOWN ********************
-
-# # (1.2) Transformations for the geography
+# # (1.1) Transformations for the geography
 
 # CELL ********************
 

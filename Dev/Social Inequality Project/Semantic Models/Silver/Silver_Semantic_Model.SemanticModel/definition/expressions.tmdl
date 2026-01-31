@@ -7,3 +7,5 @@ expression 'DirectLake - Silver_LakeHouse' =
 
 	annotation PBI_IncludeFutureArtifacts = False
 
+	annotation PBI_RemovedChildren = [{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[Gender]"}},"objectType":"Table"}]
+

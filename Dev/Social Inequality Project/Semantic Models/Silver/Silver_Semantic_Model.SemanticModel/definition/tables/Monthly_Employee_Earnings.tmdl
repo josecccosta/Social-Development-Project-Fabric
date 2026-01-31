@@ -22,25 +22,6 @@ table Monthly_Employee_Earnings
 
 		annotation SummarizationSetBy = Automatic
 
-	column Sex_Code
-		dataType: int64
-		formatString: 0
-		lineageTag: 1c5009e6-988a-40e9-b385-a905bb98bb26
-		sourceLineageTag: Sex_Code
-		summarizeBy: none
-		sourceColumn: Sex_Code
-
-		annotation SummarizationSetBy = Automatic
-
-	column Label
-		dataType: string
-		lineageTag: 6b9cf8c5-bf3b-4823-9f36-2bdc3804acde
-		sourceLineageTag: Label
-		summarizeBy: none
-		sourceColumn: Label
-
-		annotation SummarizationSetBy = Automatic
-
 	column Year
 		dataType: int64
 		formatString: 0

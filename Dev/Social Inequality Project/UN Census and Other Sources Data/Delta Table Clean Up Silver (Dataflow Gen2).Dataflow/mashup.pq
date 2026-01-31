@@ -115,7 +115,7 @@ shared #"un_census gini_index" = let
   #"Filtered rows" = Table.SelectRows(#"Marked key columns", each ([Value] <> null))
 in
   #"Filtered rows";
-[DataDestinations = {[Definition = [Kind = "Reference", QueryName = "un_census monthly_employee_earnings_DataDestination", IsNewTarget = false], Settings = [Kind = "Manual", AllowCreation = false, ColumnSettings = [Mappings = {[SourceColumnName = "ID", DestinationColumnName = "ID"], [SourceColumnName = "Country_Code_Numeric", DestinationColumnName = "Country_Code_Numeric"], [SourceColumnName = "Year", DestinationColumnName = "Year"], [SourceColumnName = "Value", DestinationColumnName = "Value"]}], DynamicSchema = false, UpdateMethod = [Kind = "Replace"], TypeSettings = [Kind = "Table"]]]}]
+[DataDestinations = {[Definition = [Kind = "Reference", QueryName = "un_census monthly_employee_earnings_DataDestination", IsNewTarget = true], Settings = [Kind = "Automatic", TypeSettings = [Kind = "Table"]]]}]
 shared #"un_census monthly_employee_earnings" = let
   Source = Lakehouse.Contents(null),
   Navigation = Source{[workspaceId = "d83c184e-82f0-4705-952c-0e29c5cb5274"]}[Data],
@@ -266,17 +266,17 @@ shared #"other human_development_index_DataDestination" = let
   TableNavigation = Navigation_2{[Id = "HDI", ItemKind = "Table"]}[Data]
 in
   TableNavigation;
-shared #"un_census monthly_employee_earnings_DataDestination" = let
-  Pattern = Lakehouse.Contents([CreateNavigationProperties = false, EnableFolding = false]),
-  Navigation_1 = Pattern{[workspaceId = "d83c184e-82f0-4705-952c-0e29c5cb5274"]}[Data],
-  Navigation_2 = Navigation_1{[lakehouseId = "e003063b-04a8-42a0-8e85-b0243d356adb"]}[Data],
-  TableNavigation = Navigation_2{[Id = "Monthly_Employee_Earnings", ItemKind = "Table"]}[Data]
-in
-  TableNavigation;
 shared #"other income_share_top_10_DataDestination" = let
   Pattern = Lakehouse.Contents([CreateNavigationProperties = false, EnableFolding = false]),
   Navigation_1 = Pattern{[workspaceId = "d83c184e-82f0-4705-952c-0e29c5cb5274"]}[Data],
   Navigation_2 = Navigation_1{[lakehouseId = "e003063b-04a8-42a0-8e85-b0243d356adb"]}[Data],
   TableNavigation = Navigation_2{[Id = "Income_Share", ItemKind = "Table"]}?[Data]?
+in
+  TableNavigation;
+shared #"un_census monthly_employee_earnings_DataDestination" = let
+  Pattern = Lakehouse.Contents([CreateNavigationProperties = false, EnableFolding = false]),
+  Navigation_1 = Pattern{[workspaceId = "d83c184e-82f0-4705-952c-0e29c5cb5274"]}[Data],
+  Navigation_2 = Navigation_1{[lakehouseId = "e003063b-04a8-42a0-8e85-b0243d356adb"]}[Data],
+  TableNavigation = Navigation_2{[Id = "Monthly_Employee_Earnings", ItemKind = "Table"]}?[Data]?
 in
   TableNavigation;

@@ -115,15 +115,15 @@
       "isHidden": true,
       "loadEnabled": false
     },
-    "un_census monthly_employee_earnings_DataDestination": {
-      "queryId": "28f01c50-5374-4414-b738-7f9108c54e74",
-      "queryName": "un_census monthly_employee_earnings_DataDestination",
-      "isHidden": true,
-      "loadEnabled": false
-    },
     "other income_share_top_10_DataDestination": {
       "queryId": "f09697ec-baab-45f7-8d75-a2f9f94f4338",
       "queryName": "other income_share_top_10_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "un_census monthly_employee_earnings_DataDestination": {
+      "queryId": "f6ea519d-5c7f-4c36-95cd-2fd63ed53b55",
+      "queryName": "un_census monthly_employee_earnings_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     }

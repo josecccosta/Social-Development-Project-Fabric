@@ -1,0 +1,63 @@
+table Unemployment_Rate
+	lineageTag: 945d9815-cf42-45f3-b920-63cbc9665e3a
+	sourceLineageTag: [dbo].[Unemployment_Rate]
+
+	column country_code_iso3
+		dataType: string
+		lineageTag: 26a3518a-5477-4250-801b-10571a49d181
+		sourceLineageTag: country_code_iso3
+		summarizeBy: none
+		sourceColumn: country_code_iso3
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c6ccf37-863e-45ab-9037-9230dfc8858f
+		sourceLineageTag: Year
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unemployment_Total
+		dataType: double
+		lineageTag: 51c8ca68-e7da-4dc1-9f1c-3af82b7e1b87
+		sourceLineageTag: Unemployment_Total
+		summarizeBy: sum
+		sourceColumn: Unemployment_Total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Unemployment_Female
+		dataType: double
+		lineageTag: 327a7d8e-2b7e-4f4a-a62f-19e69546aea4
+		sourceLineageTag: Unemployment_Female
+		summarizeBy: sum
+		sourceColumn: Unemployment_Female
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Unemployment_Male
+		dataType: double
+		lineageTag: a5caca0e-db5c-4940-9451-440c670bb5dc
+		sourceLineageTag: Unemployment_Male
+		summarizeBy: sum
+		sourceColumn: Unemployment_Male
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Unemployment_Rate = entity
+		mode: directLake
+		source
+			entityName: Unemployment_Rate
+			schemaName: dbo
+			expressionSource: 'DirectLake - Silver_LakeHouse'
+

@@ -299,3 +299,44 @@ print("✅ Coluna extra removida e Taiwan adicionado à Silver.")
 # META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
+
+# CELL ********************
+
+from pyspark.sql import functions as F
+
+df_bronze = spark.read.table("world_bank.unemployment")
+
+
+df_silver = df_bronze.select(
+    F.col("country_code_iso3"),
+    F.col("Year"),
+    F.round("Unemployment_Total", 2).alias("Unemployment_Total"),
+    F.round("Unemployment_Female", 2).alias("Unemployment_Female"),
+    F.round("Unemployment_Male", 2).alias("Unemployment_Male")
+).dropna(how='all', subset=['Unemployment_Total', 'Unemployment_Female', 'Unemployment_Male'])
+
+df_silver = df_silver.dropDuplicates(['country_code_iso3', 'Year'])
+
+catalog_name = "silver_lakehouse"
+dbo_schema = "dbo"
+table_name = "unemployment_rate"
+full_path = f"{catalog_name}.{dbo_schema}.{table_name}"
+
+print(f"🚀 A gravar dados arredondados em {full_path}...")
+
+spark.sql(f"CREATE SCHEMA IF NOT EXISTS {catalog_name}.{dbo_schema}")
+
+df_silver.write.format("delta") \
+    .mode("overwrite") \
+    .option("overwriteSchema", "true") \
+    .saveAsTable(full_path)
+
+print("✅ Processo concluído com arredondamento!")
+df_silver.select("country_code_iso3", "Year", "Unemployment_Total").show(5)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }

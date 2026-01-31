@@ -66,15 +66,6 @@ table Geography
 
 		annotation SummarizationSetBy = Automatic
 
-	column sub_region_name
-		dataType: string
-		lineageTag: 01d8678b-5cbb-4d0c-a291-c94a92298689
-		sourceLineageTag: sub_region_name
-		summarizeBy: none
-		sourceColumn: sub_region_name
-
-		annotation SummarizationSetBy = Automatic
-
 	partition Geography = entity
 		mode: directLake
 		source

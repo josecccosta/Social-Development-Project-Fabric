@@ -30,10 +30,6 @@ relationship 526d2be2-b2d2-8905-ddf0-cc822ff3b874
 	fromColumn: Countries_Social_Barriers.Country_Code_Iso3
 	toColumn: Geography.Country_Code_Iso3
 
-relationship e95f643c-b8a1-b85e-3269-fc5cf314dae5
-	fromColumn: Monthly_Employee_Earnings.Sex_Code
-	toColumn: Gender.Sex_Code
-
 relationship b7b8be84-59d8-8d9e-cbf8-5040c2a118f3
 	fromColumn: Countries_Social_Barriers.Year
 	toColumn: Dim_Date.Year
@@ -73,4 +69,8 @@ relationship e87b5f09-46d4-41fd-e456-09ba0a0021ab
 relationship 33492bba-46f9-d686-e544-49b751e3ce45
 	fromColumn: MPI.Year
 	toColumn: Dim_Date.Year
+
+relationship ce6806b4-b861-d156-31ff-0c4c519fbbac
+	fromColumn: Unemployment_Rate.country_code_iso3
+	toColumn: Geography.Country_Code_Iso3
 

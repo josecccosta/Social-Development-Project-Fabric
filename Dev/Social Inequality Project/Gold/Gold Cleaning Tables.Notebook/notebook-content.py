@@ -334,3 +334,220 @@ print(f"Colunas restantes: {df_benchmarks_clean.columns}")
 # META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
+
+# CELL ********************
+
+from pyspark.sql import functions as F
+
+df_earnings_silver = spark.read.table("silver_lakehouse.dbo.monthly_employee_earnings")
+df_geography = spark.read.table("gold_lakehouse.dbo.dim_geography")
+df_fact_wealth = spark.read.table("gold_lakehouse.dbo.fact_wealth_distribution")
+
+
+valid_years = df_fact_wealth.select(F.col("Year")).distinct()
+
+
+df_earnings_prepared = df_earnings_silver \
+    .withColumnRenamed("year", "Year") \
+    .join(
+        df_geography.select("country_code_numeric", "country_code_iso3"),
+        on="country_code_numeric",
+        how="inner"
+    ) \
+    .join(
+        valid_years,
+        on="Year",
+        how="inner"
+    ) \
+    .select(
+        F.col("country_code_iso3"),
+        F.col("Year"),
+        F.round(F.col("Value"), 2).alias("Monthly_Employee_Earnings")
+    )
+
+
+df_fact_final = df_fact_wealth.join(
+    df_earnings_prepared,
+    on=["country_code_iso3", "Year"],
+    how="left"
+)
+
+# 5. Gravação
+print("🚀 A atualizar Fact_Wealth_Distribution...")
+
+df_fact_final.write.format("delta") \
+    .mode("overwrite") \
+    .option("overwriteSchema", "true") \
+    .saveAsTable("gold_lakehouse.dbo.fact_wealth_distribution")
+
+print("✅ Concluído! Monthly_Employee_Earnings integrado na Fact.")
+df_fact_final.select("country_code_iso3", "Year", "Monthly_Employee_Earnings").show(5)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from pyspark.sql import functions as F
+
+df_fact_wealth_filtered = df_fact_final.filter(F.col("Year") >= 2010)
+
+print("🚀 A filtrar Fact_Wealth_Distribution para anos >= 2010...")
+
+df_fact_wealth_filtered.write.format("delta") \
+    .mode("overwrite") \
+    .option("overwriteSchema", "true") \
+    .saveAsTable("gold_lakehouse.dbo.fact_wealth_distribution")
+
+print("✅ Concluído! Tabela filtrada.")
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from pyspark.sql import functions as F
+
+df_macro = spark.read.table("gold_lakehouse.dbo.fact_macro_indicators")
+df_unemployment_silver = spark.read.table("silver_lakehouse.dbo.unemployment_rate")
+
+
+df_unemployment_subset = df_unemployment_silver.select(
+    "country_code_iso3", 
+    "Year", 
+    "Unemployment_Total"
+)
+
+if "Unemployment_Total" in df_macro.columns:
+    df_macro = df_macro.drop("Unemployment_Total")
+
+df_macro_final = df_macro.join(
+    df_unemployment_subset,
+    on=["country_code_iso3", "Year"],
+    how="left"
+)
+
+print("🚀 A atualizar Fact_Macro_Indicators com a taxa de desemprego...")
+
+df_macro_final.write.format("delta") \
+    .mode("overwrite") \
+    .option("overwriteSchema", "true") \
+    .saveAsTable("gold_lakehouse.dbo.fact_macro_indicators")
+
+print("✅ Concluído! Coluna Unemployment_Total integrada.")
+
+df_macro_final.filter(F.col("Year") >= 2010).select(
+    "country_code_iso3", "Year", "Unemployment_Total"
+).show(5)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from pyspark.sql import functions as F
+
+df_unemployment_silver = spark.read.table("silver_lakehouse.dbo.unemployment_rate")
+df_fact_benchmark = spark.read.table("gold_lakehouse.dbo.fact_benchmark")
+
+
+df_unemployment_prepared = df_unemployment_silver \
+    .filter(F.col("Year") >= 2010) \
+    .select(
+        F.col("country_code_iso3").alias("aggregate_code"),
+        F.col("Year"),
+        F.round(F.col("Unemployment_Total"), 2).alias("Unemployment_Rate")
+    )
+
+
+if "Unemployment_Rate" in df_fact_benchmark.columns:
+    df_fact_benchmark = df_fact_benchmark.drop("Unemployment_Rate")
+
+
+df_benchmark_final = df_fact_benchmark \
+    .filter(F.col("Year") >= 2010) \
+    .join(
+        df_unemployment_prepared,
+        on=["aggregate_code", "Year"],
+        how="left"
+    )
+
+
+full_table_path = "gold_lakehouse.dbo.fact_benchmark"
+print(f"🚀 A atualizar {full_table_path} com dados de Desemprego (2010+)...")
+
+df_benchmark_final.write.format("delta") \
+    .mode("overwrite") \
+    .option("overwriteSchema", "true") \
+    .saveAsTable(full_table_path)
+
+print(f"✅ Concluído! Coluna Unemployment_Rate integrada na Benchmark.")
+
+df_validacao = df_benchmark_final.filter(F.col("Unemployment_Rate").isNotNull())
+print(f"📊 Registos preenchidos encontrados: {df_validacao.count()}")
+df_validacao.select("aggregate_code", "Year", "Unemployment_Rate").show(10)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from pyspark.sql import functions as F
+
+df_benchmark = spark.read.table("gold_lakehouse.dbo.fact_benchmark")
+
+
+metrics_to_check = [
+    "Female_Account_Ownership",
+    "Internet_Access",
+    "Literacy_Rate",
+    "School_Attendance",
+    "Child_Mortality_Rate",
+    "Life_Expectancy",
+    "GDP_per_Capita",
+    "GDP_Annual_Growth_Pct",
+    "Inflation_CPI_Pct",
+    "Unemployment_Rate"
+]
+
+existing_metrics = [c for c in metrics_to_check if c in df_benchmark.columns]
+
+
+df_benchmark_clean = df_benchmark.dropna(how='all', subset=existing_metrics)
+
+print(f"🧹 A limpar Fact_Benchmark...")
+print(f"📉 Registos antes: {df_benchmark.count()}")
+print(f"📈 Registos depois: {df_benchmark_clean.count()}")
+
+df_benchmark_clean.write.format("delta") \
+    .mode("overwrite") \
+    .option("overwriteSchema", "true") \
+    .saveAsTable("gold_lakehouse.dbo.fact_benchmark")
+
+print("✅ Concluído! A tabela agora contém apenas anos e entidades com dados reais.")
+
+df_benchmark_clean.select("Aggregate_Code", "Year", "GDP_per_Capita", "Unemployment_Rate").show(10)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }

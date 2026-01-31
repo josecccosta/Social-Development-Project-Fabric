@@ -35,6 +35,17 @@
 
 # CELL ********************
 
+%pip install wbgapi
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 """
 import wbgapi as wb
 import pandas as pd
@@ -345,50 +356,58 @@ print(f"Fertility data successfully saved to {schema}.{table_name}")
 
 import wbgapi as wb
 import pandas as pd
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType
 
 # 1. Configuração
-countries = 'all'
 employment_indicators = {
-    'SL.UEM.TOTL.NE.ZS': 'Unemployment_Total_Pct',
-    'SL.UEM.TOTL.MA.NE.ZS': 'Unemployment_Male_Pct',
-    'SL.UEM.TOTL.FE.NE.ZS': 'Unemployment_Female_Pct',
-    'SL.UEM.1524.NE.ZS': 'Youth_Unemployment_Total_Pct',
-    'SL.UEM.1524.MA.NE.ZS': 'Youth_Unemployment_Male_Pct',
-    'SL.UEM.1524.FE.NE.ZS': 'Youth_Unemployment_Female_Pct'
+    'SL.UEM.TOTL.ZS': 'Unemployment_Total',
+    'SL.UEM.TOTL.FE.ZS': 'Unemployment_Female',
+    'SL.UEM.TOTL.MA.ZS': 'Unemployment_Male'
 }
 
-# 2. Fetch Data (Voltando aos 40 anos)
-print("1. A descarregar 40 anos de dados da API... (Isto pode levar 2-3 min)")
-df_employment = wb.data.DataFrame(list(employment_indicators.keys()), countries, mrv=40, columns='series')
+print("1. A descarregar dados brutos da API para a Bronze...")
+df_employment = wb.data.DataFrame(
+    list(employment_indicators.keys()), 
+    economy='all', 
+    time=range(2010, 2026), 
+    columns='series'
+).reset_index()
 
-# 3. Limpeza e Formatação
-df_employment = df_employment.rename(columns=employment_indicators).reset_index()
+# 2. Renomeação básica e cast de tempo (necessário para a estrutura de tabela)
+df_employment = df_employment.rename(columns=employment_indicators)
 df_employment['time'] = df_employment['time'].str.replace('YR', '').astype(int)
-df_employment = df_employment.rename(columns={'economy': 'Country_Code_Iso3', 'time': 'Year'})
+df_employment = df_employment.rename(columns={'economy': 'country_code_iso3', 'time': 'Year'})
 
-# --- TRATAMENTO PARA O SPARK NÃO TRAVAR ---
-# Converte colunas numéricas para float explicitamente e preenche vazios com None (que o Spark entende como NULL)
-cols_to_fix = list(employment_indicators.values())
-for col in cols_to_fix:
-    df_employment[col] = pd.to_numeric(df_employment[col], errors='coerce')
+# 3. Schema para garantir integridade na Bronze
+schema_bronze = StructType([
+    StructField("country_code_iso3", StringType(), True),
+    StructField("Year", IntegerType(), True),
+    StructField("Unemployment_Total", DoubleType(), True),
+    StructField("Unemployment_Female", DoubleType(), True),
+    StructField("Unemployment_Male", DoubleType(), True)
+])
 
-df_employment = df_employment.sort_values(['Country_Code', 'Year']).reset_index(drop=True)
+# 4. Gravação na Bronze
+# Definimos o schema (world_bank) e o nome da tabela
+schema_name = "world_bank"
+table_name = "Unemployment"
+full_table_path = f"{schema_name}.{table_name}"
 
-# 4. Gravação no Delta Table
-schema = "world_bank"
-table_name = "unemployment_rates_global"
+print(f"2. A garantir que o schema '{schema_name}' existe...")
+# Criamos o schema world_bank caso ele não exista
+spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema_name}")
 
-print(f"2. A gravar em {schema}.{table_name}...")
-spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema}")
+# Criar o DataFrame Spark com o schema_bronze definido anteriormente
+df_spark = spark.createDataFrame(df_employment, schema=schema_bronze)
 
-df_spark = spark.createDataFrame(df_employment)
+print(f"3. A gravar tabela '{full_table_path}' no formato Delta...")
 
 df_spark.write.format("delta") \
     .mode("overwrite") \
     .option("overwriteSchema", "true") \
-    .saveAsTable(f"{schema}.{table_name}")
+    .saveAsTable(full_table_path)
 
-print(f"✓ SUCESSO! Dados de 40 anos guardados em {schema}.{table_name}")
+print(f"✓ SUCESSO! Dados brutos guardados em: {full_table_path}")
 
 # METADATA ********************
 
