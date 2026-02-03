@@ -1,4 +1,4 @@
-# The Data Abyss: A Multidimensional Analysis of Social Inequality
+<img width="259" height="53" alt="image" src="https://github.com/user-attachments/assets/333fc494-b334-4cec-8a33-58dd63a5f6ab" /># The Data Abyss: A Multidimensional Analysis of Social Inequality
 
 # 1. Project Objectives
 In the modern global economy, the gap between the "haves" and the "have-nots" is no longer just a matter of bank balances. It is a vast, multidimensional abyss that separates nations and regions across every facet of human existence. By synthesizing these diverse indicators, we can identify not just where inequality exists, but how it evolves across different economic contexts and global policy eras (MDGs vs. SDGs).
@@ -91,6 +91,8 @@ Because the World Bank data required more nuanced time-series handling and busin
 | **Unemployment_Rate** | Country Name, Year, Unemployement Rate, Gender Code | Monitors labor market stability across different demographic segments. |
 | **HDI** | Country Name, Year, Human Development Index  | Global indices for human development |
 | **Gini_Index** | Country Name, Year, Gini Index | Global indices for income inequality |
+| **Economic_Indicators** | Country Name, Year, Gini Index | Global indices for income inequality | 
+
 
 **Table 1:** *Data Dictionary for Labor and Economic Indicators*
 
