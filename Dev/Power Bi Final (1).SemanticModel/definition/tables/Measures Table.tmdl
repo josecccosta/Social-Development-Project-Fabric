@@ -1,0 +1,532 @@
+table 'Measures Table'
+	lineageTag: 289df726-5c4a-47f3-ac95-40f86064af27
+	sourceLineageTag: 775e0916-df23-449c-b5a7-c1498aeb0108
+
+	measure Latitude_Final = EXTERNALMEASURE("Latitude_Final", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals 2.1
+		lineageTag: 7d471706-26a6-4661-a348-fe5cf6ce8f98
+		sourceLineageTag: f82f779b-f200-4800-a860-c18d168d80ef
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Longitude_Final = EXTERNALMEASURE("Longitude_Final", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals 2.1
+		lineageTag: ed009f98-f77a-4d8e-9c49-41eb3868a6b1
+		sourceLineageTag: 6638f12d-88a5-4c33-9b2b-3ffc428bc3af
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Gini_Value_Last_Year = EXTERNALMEASURE("Gini_Value_Last_Year", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals 2.1
+		lineageTag: 33c7bec4-18de-4b34-9254-c337ce9629f9
+		sourceLineageTag: ad6d97b0-1474-40c3-bd9f-6aa2bc6fe46a
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure HDI_Value_Last_Available = EXTERNALMEASURE("HDI_Value_Last_Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals 2.1
+		lineageTag: b7eff417-7da3-4df3-98f7-5a5b94ac281d
+		sourceLineageTag: 6f5e2c7a-28da-4e6b-a8a4-df9dfd54c0bb
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure GDP_Per_Capita_Last_Year = EXTERNALMEASURE("GDP_Per_Capita_Last_Year", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals 2.1
+		lineageTag: e6203bae-ec46-4121-9a89-08aac5b0714c
+		sourceLineageTag: b3f91096-7c7d-45a5-b417-86d5c4211e5d
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Gini_Backfilled = EXTERNALMEASURE("Gini_Backfilled", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		formatString: 0.00
+		displayFolder: Visuals 2.1
+		lineageTag: a046d74e-1c89-412c-8010-8300206723b9
+		sourceLineageTag: 17c67a38-17f3-4273-bf94-d4df56d5ae75
+		dataCategory: Uncategorized
+
+		changedProperty = FormatString
+
+	measure HDI_Backfilled = EXTERNALMEASURE("HDI_Backfilled", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals 2.1
+		lineageTag: 794308ae-023d-45b5-909c-5301900e26d8
+		sourceLineageTag: 69a07afc-6297-4aed-8338-a1782740347d
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Latest Population' = EXTERNALMEASURE("Latest Population", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Fact_Macro_Indicators
+		lineageTag: 662d8ec4-4f3f-4026-a907-32d3e1aa5672
+		sourceLineageTag: 4080c8c4-74dd-4458-ae93-bd3bdd4fdc59
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Population_Last_Available = EXTERNALMEASURE("Population_Last_Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals 2.1
+		lineageTag: 439cec20-5e72-4a38-a2bd-66d3b8d707da
+		sourceLineageTag: cc55d411-060d-4452-82cc-7bbaa2926132
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Max Gini Index' = EXTERNALMEASURE("Max Gini Index", STRING, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Cards Page 2.1
+		lineageTag: 1f4dc47a-ac96-4560-9861-581b2adc7c57
+		sourceLineageTag: 1e72b9aa-4868-4b51-9bf7-e2f63b81d18a
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Min Gini Index' = EXTERNALMEASURE("Min Gini Index", STRING, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Cards Page 2.1
+		lineageTag: f7c8c09b-2a21-4016-bb70-7a6a6620afef
+		sourceLineageTag: ce92c636-a492-4186-a2d2-bf8dc6a0e113
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Max HDI' = EXTERNALMEASURE("Max HDI", STRING, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Cards Page 2.1
+		lineageTag: 87be6ed2-4a2a-419b-94de-751249bf2897
+		sourceLineageTag: 1e3d798c-e807-4f04-b8bc-944bf24459af
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Min HDI' = EXTERNALMEASURE("Min HDI", STRING, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Cards Page 2.1
+		lineageTag: 2af2899e-1047-47c2-be5b-f7c1e7f4b285
+		sourceLineageTag: 0e699c67-c689-45a6-85d1-e3702c0c8de4
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Latest Population Formatted' = EXTERNALMEASURE("Latest Population Formatted", STRING, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Fact_Macro_Indicators
+		lineageTag: 594e62f5-9b14-478a-97a1-dfff8786d25d
+		sourceLineageTag: 9d649f33-408b-4439-8ffe-606ac0498cac
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Wealth Share Top 10%' = EXTERNALMEASURE("Wealth Share Top 10%", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Visuals 2.2
+		lineageTag: 15ae2935-cf68-4c6f-b4ea-fe6a059b243a
+		sourceLineageTag: 5c99a9b3-f7b8-4d9f-bb53-38267e7a2e10
+		dataCategory: Uncategorized
+
+	measure 'Average Wage Last Available' = EXTERNALMEASURE("Average Wage Last Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals 2.2
+		lineageTag: 14afba29-3d5c-4407-8e91-a3daee80093b
+		sourceLineageTag: ea5ba681-2f73-4526-a772-520773a83cfb
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gini Last Value Available' = EXTERNALMEASURE("Gini Last Value Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals 2.2
+		lineageTag: 2ba21d65-a2cd-4a4d-9a55-4a2a56607d39
+		sourceLineageTag: 0b1ec3f3-8926-48e2-83f4-796464bbebab
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Top 1% Share' = EXTERNALMEASURE("Avg Top 1% Share", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Vasco
+		lineageTag: 3de3009c-1f58-45fc-adfb-2c6bcde7cb9e
+		sourceLineageTag: 0c855407-4c28-4d19-a39f-a566cfee8834
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Concentration Trend' = EXTERNALMEASURE("Concentration Trend", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		formatString: 0
+		displayFolder: Vasco
+		lineageTag: 0fb3ef98-0966-4888-a76b-649a4bfe55fb
+		sourceLineageTag: 749003a1-1f73-4a00-a120-109a80132882
+		dataCategory: Uncategorized
+
+	measure Wealth_Share_Bottom_50_Last_Available = EXTERNALMEASURE("Wealth_Share_Bottom_50_Last_Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals 2.3
+		lineageTag: 4c19fea3-1897-4653-acac-0dc6e47f3737
+		sourceLineageTag: 9954ed99-87e2-4ad8-861c-715b06ee4d76
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Max_Inclusion_Gap = EXTERNALMEASURE("Max_Inclusion_Gap", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals 2.3
+		lineageTag: 9ea2a9e1-0728-48ca-8c6d-47a6917d20ed
+		sourceLineageTag: 02db9d37-e799-4fb9-abec-c0b30047cf14
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Life_Expectancy_Last_Available = EXTERNALMEASURE("Life_Expectancy_Last_Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Cards Page 3
+		lineageTag: b001fd8b-eeb4-49ba-8d9f-03252947f907
+		sourceLineageTag: fcfcbee9-b68d-4a67-99e3-6ff6dc5104b0
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Literacy_Rate_Last_Available = EXTERNALMEASURE("Literacy_Rate_Last_Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Cards Page 3
+		lineageTag: 600d852a-9935-4b7f-b854-ac8c980f266a
+		sourceLineageTag: 076731fb-476d-4588-a893-40f83d6e3a4e
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Internet_Access_Last_Available = EXTERNALMEASURE("Internet_Access_Last_Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Cards Page 3
+		lineageTag: 2e71e1de-5642-4daf-9b9c-d146d1935945
+		sourceLineageTag: ed9aaa87-b275-4aa0-9310-d2b81fbe6ff7
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Female_Account_Last_Available = EXTERNALMEASURE("Female_Account_Last_Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Cards Page 3
+		lineageTag: 3834705a-3449-4061-a84d-86eb88f4d6e4
+		sourceLineageTag: 9c62668a-dba3-42a6-a6c4-a5b0de1e39e5
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure School_Attendance_Last_Available = EXTERNALMEASURE("School_Attendance_Last_Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Cards Page 3
+		lineageTag: ce28d646-722b-4405-9ec8-3dbf03b5773c
+		sourceLineageTag: ab0db545-0b80-449e-b38a-d0e1c819fb09
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Child Mortality (Pre-COVID)' = EXTERNALMEASURE("Avg Child Mortality (Pre-COVID)", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Vasco
+		lineageTag: 3ba2ee71-0f60-483e-af7f-32a7d3a29c13
+		sourceLineageTag: 43d01e63-61c9-4403-a4df-7139d3bc3c92
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Life Expectancy (Pre-COVID)' = EXTERNALMEASURE("Avg Life Expectancy (Pre-COVID)", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Vasco
+		lineageTag: 7881506d-10b6-4176-9791-7629a2c8ee95
+		sourceLineageTag: 6d27810a-3450-4ed8-95e6-f028ddcf7dde
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pre-COVID Unemployment' = EXTERNALMEASURE("Pre-COVID Unemployment", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Vasco
+		lineageTag: a7b62259-037a-4733-b6d5-2fcf2073f267
+		sourceLineageTag: b17631c9-c446-4ab3-abf0-f75a98f9b7ef
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'COVID Peak Unemployment' = EXTERNALMEASURE("COVID Peak Unemployment", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Vasco
+		lineageTag: 662b1d94-ab75-47bf-82d8-bdc44d4123f9
+		sourceLineageTag: 7c6bb672-0997-4266-8055-15aea385c8c6
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Unemployment Shock (COVID)' = EXTERNALMEASURE("Unemployment Shock (COVID)", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Vasco
+		lineageTag: 411624fa-627f-4aa5-a058-796a8559848e
+		sourceLineageTag: 046e9386-1682-439e-8a48-e6f1ce91507b
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Unemployment_Last_Available = EXTERNALMEASURE("Unemployment_Last_Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Cards Page 3
+		lineageTag: e6afd5a9-0265-4bec-9e98-7122a8d4dd6b
+		sourceLineageTag: 179c658b-004c-441b-8804-48517a2edc1e
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Gini_Index_Last_Available = EXTERNALMEASURE("Gini_Index_Last_Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Cards Page 3
+		lineageTag: 5f54bca3-3f94-4397-98d9-d196e619c4c6
+		sourceLineageTag: d2d23798-9c7d-4981-b191-6a72f2fa8f6d
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Child_Mortality_Last_Available = EXTERNALMEASURE("Child_Mortality_Last_Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Cards Page 3
+		lineageTag: 7b152345-df1e-41ec-9d9a-813cd3403ebc
+		sourceLineageTag: 75153dbe-5737-4a93-a3fb-38965392b106
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Unemployment_Delta_2010_2014 = EXTERNALMEASURE("Unemployment_Delta_2010_2014", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals Page 4
+		lineageTag: af28c368-cb6d-4bbe-9be2-1cc6ebc45616
+		sourceLineageTag: 8a484b09-0cf7-416e-8095-5b2b4eb16317
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Unemployment_Delta_2019_2022 = EXTERNALMEASURE("Unemployment_Delta_2019_2022", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals Page 4
+		lineageTag: edbe17e9-d5d6-4fc9-b358-3e1479aebbd9
+		sourceLineageTag: b78bc608-9cdc-4d85-aca7-221820b1d538
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_Wage = EXTERNALMEASURE("Average_Global_Wage", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Targets Gauges Page 3
+		lineageTag: 14e60122-635e-4b73-a916-64fa7761c2a6
+		sourceLineageTag: a88384d4-e26b-4f3d-8cd6-37f3378e708e
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_Female_Account = EXTERNALMEASURE("Average_Global_Female_Account", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Targets Gauges Page 3
+		lineageTag: 8c0b996b-06ac-4e51-a4ea-bbb9191e7093
+		sourceLineageTag: 6bfc885c-0945-4039-97d9-c02cf2c097a7
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_Gini_Index = EXTERNALMEASURE("Average_Global_Gini_Index", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Targets Gauges Page 3
+		lineageTag: af145cdc-648a-4877-a2fa-83f657d54392
+		sourceLineageTag: c70781aa-9b0e-4106-afa0-c0025bec4bc4
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_Life_Expectancy = EXTERNALMEASURE("Average_Global_Life_Expectancy", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Targets Gauges Page 3
+		lineageTag: 2ed281f2-f091-4a3e-95c7-641bcda06481
+		sourceLineageTag: 8165ff6a-4471-49cc-b4c9-bc132260be49
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_Internet_Access = EXTERNALMEASURE("Average_Global_Internet_Access", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Targets Gauges Page 3
+		lineageTag: 035e6db8-5d08-42c2-b43a-f7f86bdb6279
+		sourceLineageTag: 6cea317c-79da-4dbf-90aa-8b259d60497e
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_Literacy_Rate = EXTERNALMEASURE("Average_Global_Literacy_Rate", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Targets Gauges Page 3
+		lineageTag: 46eca33a-6d0f-4bb5-9042-1d50aae587c6
+		sourceLineageTag: 3a98d515-0175-40e1-84c6-c6c1cd2ad558
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_School_Attendance = EXTERNALMEASURE("Average_Global_School_Attendance", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Targets Gauges Page 3
+		lineageTag: d9122ab1-7001-4d89-9550-a1f92320965b
+		sourceLineageTag: 3c2bd4c3-8b6f-472e-b3fe-a805c3d3e756
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_Unemployment = EXTERNALMEASURE("Average_Global_Unemployment", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Targets Gauges Page 3
+		lineageTag: 0920af46-1a4e-4a8b-99e7-37c4a66505de
+		sourceLineageTag: 85846ef5-5fce-453a-abe5-f4d17b40b986
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure GDP_Last_Available = EXTERNALMEASURE("GDP_Last_Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals Page 4
+		lineageTag: 6e5e27b8-4a7e-463e-a12c-97dae590e097
+		sourceLineageTag: a1a5f368-bdc7-4f60-b0c0-20a453dd7974
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Inflation_Last_Available = EXTERNALMEASURE("Inflation_Last_Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		displayFolder: Visuals Page 4
+		lineageTag: 69319812-2f05-4ea1-872d-e7b93f98d38a
+		sourceLineageTag: 73c9fba1-2147-4ddc-ae65-1c1d67cc5420
+		dataCategory: Uncategorized
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Final_Score_Simulated =
+			
+			-- 1. Capturar os valores dos Sliders
+			VAR S_Lit = [Valor de Literacy Improvement]
+			VAR S_Health = [Valor de Health Improvement]
+			VAR S_Dig = [Valor de Digital Access Improvement]
+			
+			-- 2. Definir o peso (importância) de cada um (Ex: 33% para cada)
+			-- Podes ajustar estes pesos, desde que a soma deles seja 1.0
+			VAR PesoLit = 0.33
+			VAR PesoHealth = 0.33
+			VAR PesoDig = 0.34
+			
+			-- 3. Calcular a média ponderada
+			VAR ScoreCalculado = (S_Lit * PesoLit) + (S_Health * PesoHealth) + (S_Dig * PesoDig)
+			
+			-- 4. Garantir que o limite é 100 (O "Cap")
+			RETURN
+			MIN(100, ScoreCalculado)
+		lineageTag: 34eb3716-438e-4d9f-bf75-f8bf01a844af
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Score_Base_Real = [Average Wage Last Available]
+		lineageTag: 6660094a-a403-404d-a268-dda39a98a144
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Score_Projetado = ```
+			
+			VAR Base = [Average Wage Last Available]
+			
+			-- 1. Calculamos quanto falta para chegar ao máximo (Gap) em cada indicador
+			VAR Gap_Lit = 100 - [Literacy_Rate_Last_Available]
+			VAR Gap_Health = 100 - [Life_Expectancy_Last_Available]
+			VAR Gap_Digital = 100 - [Internet_Access_Last_Available]
+			
+			-- 2. O impacto real é: (O que falta) * (% do Slider) * (Sensibilidade Histórica)
+			-- Dividimos por 100 no final porque o Slider e o Gap estão em escala de 0-100
+			VAR Impacto_Real = 
+			    (Gap_Lit * ([Valor de Literacy Improvement] / 100) * [Sensitivity_Alpha_Lit]) +
+			    (Gap_Health * ([Valor de Health Improvement] / 100) * [Sensitivity_Alpha_Health]) +
+			    (Gap_Digital * ([Valor de Digital Access Improvement] / 100) * [Sensitivity_Alpha_Digital])
+			
+			RETURN 
+			IF(ISBLANK(Base), BLANK(), Base + Impacto_Real)
+			```
+		lineageTag: 26630aca-ebfd-4444-8abf-27954672be25
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Sensitivity_Alpha_Lit =
+			
+			VAR HistoricoFiltrado = FILTER(ALLSELECTED('Fact_Social_Barriers'), NOT(ISBLANK([Average Wage Last Available])) && NOT(ISBLANK([Literacy_Rate_Last_Available])))
+			VAR MaxWage = MAXX(HistoricoFiltrado, [Average Wage Last Available])
+			VAR MaxLit = MAXX(HistoricoFiltrado, [Literacy_Rate_Last_Available])
+			RETURN DIVIDE(MaxWage, MaxLit, 0) * 0.1
+		lineageTag: 866a3059-8a14-4995-ad7c-3ac130154e40
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Sensitivity_Alpha_Health = ```
+			
+			VAR HistoricoFiltrado = 
+			    FILTER(
+			        ALLSELECTED('Fact_Social_Barriers'), 
+			        NOT(ISBLANK([Average Wage Last Available])) && 
+			        NOT(ISBLANK([Life_Expectancy_Last_Available]))
+			    )
+			VAR MaxWage = MAXX(HistoricoFiltrado, [Average Wage Last Available])
+			VAR MaxHealth = MAXX(HistoricoFiltrado, [Life_Expectancy_Last_Available])
+			
+			RETURN DIVIDE(MaxWage, MaxHealth, 0) * 0.1
+			```
+		lineageTag: 10fa0a85-8e2f-4234-92d2-1e9d1417fdcf
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Sensitivity_Alpha_Digital = ```
+			
+			VAR HistoricoFiltrado = 
+			    FILTER(
+			        ALLSELECTED('Fact_Social_Barriers'), 
+			        NOT(ISBLANK([Average Wage Last Available])) && 
+			        NOT(ISBLANK([Internet_Access_Last_Available]))
+			    )
+			VAR MaxWage = MAXX(HistoricoFiltrado, [Average Wage Last Available])
+			VAR MaxDigital = MAXX(HistoricoFiltrado, [Internet_Access_Last_Available])
+			
+			RETURN DIVIDE(MaxWage, MaxDigital, 0) * 0.1
+			```
+		lineageTag: a6187958-5d5b-4e2b-9397-528dcf79be80
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Lit_Projetada =
+			
+			VAR Atual = [Literacy_Rate_Last_Available]
+			VAR Falta = 100 - Atual
+			VAR Incremento = Falta * ([Valor de Literacy Improvement] / 100)
+			RETURN Atual + Incremento
+		lineageTag: 7529525b-9137-4ee8-b954-22c15d510d26
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Health_Projetada =
+			
+			VAR Atual = [Life_Expectancy_Last_Available]
+			VAR Falta = 100 - Atual
+			-- O slider de 0 a 100 passa a representar a % do que falta que queremos preencher
+			VAR Incremento = Falta * ([Valor de Health Improvement] / 100)
+			RETURN Atual + Incremento
+		lineageTag: 29e7afd9-11a7-41fe-b01a-551a790c0747
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Digital_Projetada =
+			
+			VAR Atual = [Internet_Access_Last_Available]
+			VAR Falta = 100 - Atual
+			VAR Incremento = Falta * ([Valor de Digital Access Improvement] / 100)
+			RETURN Atual + Incremento
+		lineageTag: 379f0755-cd32-4885-8fe2-f2945004d91c
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column
+		dataType: int64
+		formatString: 0
+		lineageTag: 4967415c-8bb0-4a74-9205-1be4ab538664
+		sourceLineageTag: e477b466-49aa-406c-90ca-e1a55369d89d
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Column
+
+		annotation SummarizationSetBy = User
+
+	partition 'Measures Table' = entity
+		mode: directQuery
+		source
+			entityName: Measures Table
+			expressionSource: 'DirectQuery para AS - Gold_Semantic_Model'
+

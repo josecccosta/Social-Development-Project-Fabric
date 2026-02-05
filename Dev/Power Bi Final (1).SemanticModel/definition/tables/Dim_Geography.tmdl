@@ -1,0 +1,179 @@
+table Dim_Geography
+	lineageTag: c66dd172-8a58-4cc7-b47b-695d9ac1bf05
+	sourceLineageTag: 361214d4-03bc-463d-b60f-82d176f2410f
+
+	column region_name
+		dataType: string
+		lineageTag: 97574f54-d1c5-4b1d-87d1-90e78d51df4d
+		sourceLineageTag: 6d813b02-f4f1-4bc5-90e1-1d36fd40caf5
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: region_name
+
+		annotation SummarizationSetBy = User
+
+	column sub-region_name
+		dataType: string
+		lineageTag: 854c9c4e-568d-4736-a65e-054b4a69411f
+		sourceLineageTag: aede218d-22e4-42d4-ad67-18f5b342d910
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: sub-region_name
+
+		annotation SummarizationSetBy = User
+
+	column intermediate_region_name
+		dataType: string
+		lineageTag: 367b877a-924b-4cbc-b923-58c75886701b
+		sourceLineageTag: 044fd9a8-c8ed-40f6-84f4-dcc369cc691c
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: intermediate_region_name
+
+		annotation SummarizationSetBy = User
+
+	column country_or_area
+		dataType: string
+		lineageTag: cfaf70dd-3488-4e06-a90e-daa3f7a66dfe
+		sourceLineageTag: dd138a57-1344-4366-9d7f-77b9e1da92ee
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: country_or_area
+
+		annotation SummarizationSetBy = User
+
+	column Country_Code_Numeric
+		dataType: int64
+		formatString: 0
+		lineageTag: 737a1f38-81cc-4353-8e6f-7a0b6d9f13a0
+		sourceLineageTag: 86541f1c-7a27-4232-83f9-6b3c2b6ae0ad
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Country_Code_Numeric
+
+		annotation SummarizationSetBy = User
+
+	column Country_Code_Iso2
+		dataType: string
+		lineageTag: 84bf31ad-a2f2-4e2e-b79a-bc7824382fd3
+		sourceLineageTag: d54bca79-04de-4e97-8aec-003d2d5e1844
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Country_Code_Iso2
+
+		annotation SummarizationSetBy = User
+
+	column Country_Code_Iso3
+		dataType: string
+		isNullable: false
+		lineageTag: fb66a3c3-4207-49ec-a355-2d3b28930cdc
+		sourceLineageTag: 74cbd50f-961b-4368-a062-b954b690802b
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Country_Code_Iso3
+
+		annotation SummarizationSetBy = User
+
+	column reg_lat
+		dataType: double
+		displayFolder: Latitude
+		lineageTag: b093574a-be5d-413d-8fe4-9b3dee7bfbdc
+		sourceLineageTag: 5e5f0e7c-c453-432c-a13c-97cd8d0832f0
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: reg_lat
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column reg_long
+		dataType: double
+		displayFolder: Longitude
+		lineageTag: 26dccded-f08d-4c35-ba32-13d0d6759461
+		sourceLineageTag: 2e9ac725-3de1-432c-995b-9b0995d3ad76
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: reg_long
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column country_lat
+		dataType: double
+		displayFolder: Latitude
+		lineageTag: f1d5f611-816e-484a-b4bc-da75d7a6ed0c
+		sourceLineageTag: 6afab18a-90bf-40b1-a9a6-ee9e83e26e4b
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: country_lat
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column country_long
+		dataType: double
+		displayFolder: Longitude
+		lineageTag: bf9f4ab5-9ab2-472e-b385-20a8d930a47b
+		sourceLineageTag: 4966b4c1-00a9-4ba1-ac6c-04a73da90110
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: country_long
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column intermediate_lat
+		dataType: double
+		displayFolder: Latitude
+		lineageTag: c3c13eb9-648c-4066-bc44-4f12713404c7
+		sourceLineageTag: 43ba9b2d-f702-47ef-af66-db22e5b6bf74
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: intermediate_lat
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column intermediate_long
+		dataType: double
+		displayFolder: Longitude
+		lineageTag: 1d777cbd-5dbc-4515-a9f2-a8671e976a28
+		sourceLineageTag: 21c21832-7c87-4ab9-abae-1ff1851a6bf6
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: intermediate_long
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	hierarchy 'region_name Hierarchy'
+		lineageTag: c1536231-c414-46c1-a5e8-21f639aceaeb
+		sourceLineageTag: 1b224e8f-9783-429b-a950-f0964e2b8b31
+
+		level region_name
+			lineageTag: af9b8ccb-19c6-44da-a22d-b16a521efc55
+			sourceLineageTag: d076a0cf-73e6-4f3e-b8c6-0c7efef77fcc
+			column: region_name
+
+		level intermediate_region_name
+			lineageTag: 7d164d7d-318a-4ccb-8470-339eda4e4ebd
+			sourceLineageTag: 46555dd8-6632-4b25-8354-71ec0e0806f4
+			column: intermediate_region_name
+
+		level country_or_area
+			lineageTag: 123bafb3-e23e-43b5-ad0b-ad6e68f96e1c
+			sourceLineageTag: a4dc8e1a-59d7-4469-a70d-6b59a9cf966c
+			column: country_or_area
+
+	partition Dim_Geography = entity
+		mode: directQuery
+		source
+			entityName: Dim_Geography
+			expressionSource: 'DirectQuery para AS - Gold_Semantic_Model'
+

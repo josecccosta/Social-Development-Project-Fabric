@@ -1,0 +1,115 @@
+table Fact_Macro_Indicators
+	lineageTag: e1749de2-d834-4f07-b817-fd3337881c65
+	sourceLineageTag: ddb2c314-e927-48e3-8ba3-4974059ee455
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c9ef987-1627-4591-8314-92f936541505
+		sourceLineageTag: 3628078e-0dbf-4d25-8af7-551628646856
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = User
+
+	column Gini_Index
+		dataType: double
+		lineageTag: f879751d-210a-4436-91f0-6e7386d4189d
+		sourceLineageTag: 93115c3c-308d-4d99-b9be-56d7a47858e4
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Gini_Index
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GDP_per_Capita
+		dataType: double
+		lineageTag: 4439a006-64df-49fd-a834-fe54f454a590
+		sourceLineageTag: 608b7124-affc-430e-a612-f1f9360be62d
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: GDP_per_Capita
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GDP_Annual_Growth_Pct
+		dataType: double
+		lineageTag: a96d8060-f38b-4e7a-9cd2-1824fd29411b
+		sourceLineageTag: 893b101f-785d-40bc-95a5-5e8aaf98899f
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: GDP_Annual_Growth_Pct
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Inflation_CPI_Pct
+		dataType: double
+		lineageTag: 38352bf0-2ad8-4ce0-8274-81e46c92872a
+		sourceLineageTag: 7f955d33-adda-4bad-b707-5348781a7435
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Inflation_CPI_Pct
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HDI
+		dataType: double
+		lineageTag: a68a9098-64fa-4e80-bed8-ab5e2b992fe7
+		sourceLineageTag: 5da9c2c8-1f88-440e-b0ea-0198e56e630b
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: HDI
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Unemployment_Total
+		dataType: double
+		lineageTag: 75e322d8-e77b-485b-a7a6-4646f6274cd1
+		sourceLineageTag: d6bea229-587e-43fd-b8a1-72219ade6f43
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Unemployment_Total
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Pop_Total_Count
+		dataType: double
+		lineageTag: 1afa3c0f-5e86-4c66-b4b8-27146beba517
+		sourceLineageTag: 3fb81b11-739d-4bc4-80bd-9c25c26be8b1
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Pop_Total_Count
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Country_Code_Iso3
+		dataType: string
+		lineageTag: ea3bfe39-c2d0-442c-a5ae-ba3e50b3c880
+		sourceLineageTag: 812aa4a0-d0ed-4db9-9525-884a8f284f19
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Country_Code_Iso3
+
+		annotation SummarizationSetBy = User
+
+	partition Fact_Macro_Indicators = entity
+		mode: directQuery
+		source
+			entityName: Fact_Macro_Indicators
+			expressionSource: 'DirectQuery para AS - Gold_Semantic_Model'
+

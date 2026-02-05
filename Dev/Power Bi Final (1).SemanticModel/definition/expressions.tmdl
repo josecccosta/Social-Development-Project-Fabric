@@ -1,0 +1,11 @@
+expression 'DirectQuery para AS - Gold_Semantic_Model' =
+		let
+		    Source = AnalysisServices.Database("powerbi://api.powerbi.com/v1.0/myorg/Social%20Development%20Project", "Gold_Semantic_Model"),
+		    Cubes = Table.Combine(Source[Data]),
+		    Cube = Cubes{[Id="Model", Kind="Cube"]}[Data]
+		in
+		    Cube
+	lineageTag: 16d28e9d-7c1a-4019-8e04-93261bc33c88
+
+	annotation PBI_IncludeFutureArtifacts = True
+

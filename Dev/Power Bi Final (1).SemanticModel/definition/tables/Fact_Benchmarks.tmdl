@@ -1,0 +1,183 @@
+table Fact_Benchmarks
+	lineageTag: 04b28101-0333-4beb-a1f1-8d985371a54b
+	sourceLineageTag: d17236f8-5fea-4987-8dff-ab7818318099
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 55c98573-5354-417b-b1af-5e41e733f3f7
+		sourceLineageTag: f82d785d-7838-45d0-ba15-9875696f269e
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = User
+
+	column Female_Account_Ownership
+		dataType: double
+		lineageTag: 63a54a74-a10f-471c-b3e7-5f59ff978ef7
+		sourceLineageTag: b5f94185-a4cc-43d5-b89d-a8d862a9aa84
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Female_Account_Ownership
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Internet_Access
+		dataType: double
+		lineageTag: e38ebe63-dcb5-400d-b766-b06c2541d3a8
+		sourceLineageTag: 57133d49-02df-4259-ba12-572c4ec4a82e
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Internet_Access
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Literacy_Rate
+		dataType: double
+		lineageTag: 8174a5c5-cbf9-4c3a-898f-c7f8d066a2ba
+		sourceLineageTag: 7a74b102-da9b-4e9a-98a0-6048c22dfbf6
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Literacy_Rate
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column School_Attendance
+		dataType: double
+		lineageTag: 3c8521ae-5e96-4d65-b2ca-e4f3aadf5657
+		sourceLineageTag: d7fc65f2-90b1-4674-a991-ce7de8d6f32f
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: School_Attendance
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Child_Mortality_Rate
+		dataType: double
+		lineageTag: 10ec33f3-f4eb-4620-805d-89a83a007588
+		sourceLineageTag: 374aff36-ebf8-4ba8-9d3c-a029dad48e81
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Child_Mortality_Rate
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Life_Expectancy
+		dataType: double
+		lineageTag: 16c413c9-e45e-4f59-abf2-9fce54cc92f8
+		sourceLineageTag: e8f1121f-88ce-4620-8489-8b870571a72a
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Life_Expectancy
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Description
+		dataType: string
+		lineageTag: 60f10352-8dc1-429a-bffb-93d0048b8aad
+		sourceLineageTag: 10d69285-b90e-4e85-bbbb-fdb3e783cba1
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = User
+
+	column Entity_Type
+		dataType: string
+		lineageTag: 8ac501ad-58ad-4729-b4e9-99a1a7cd1f96
+		sourceLineageTag: 4f6dad70-2e0f-460a-b1c6-594bf9b32c21
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Entity_Type
+
+		annotation SummarizationSetBy = User
+
+	column GDP_per_Capita
+		dataType: double
+		lineageTag: 49e14930-683d-45dc-9a5f-0606006c154b
+		sourceLineageTag: 766c9b00-c81c-4e04-afd4-bed1bb8d1edd
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: GDP_per_Capita
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GDP_Annual_Growth_Pct
+		dataType: double
+		lineageTag: 57990a20-1a7c-4090-84df-aa4f099d9d9e
+		sourceLineageTag: 665a5aff-0e77-4471-bc95-c310f77d9b64
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: GDP_Annual_Growth_Pct
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Inflation_CPI_Pct
+		dataType: double
+		lineageTag: 20d45233-f517-4d8f-b34a-099900174549
+		sourceLineageTag: a9ec915e-51ee-4fa4-b0ff-d4c0a5cd2bac
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Inflation_CPI_Pct
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Unemployment_Rate
+		dataType: double
+		lineageTag: c7e33a30-50f5-48c9-926f-ba7468b24548
+		sourceLineageTag: 9c57d030-1d8b-4b19-b847-ca6f208ea1c6
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Unemployment_Rate
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Country_Code_Iso3
+		dataType: string
+		lineageTag: b3c8b0b9-0177-4362-910d-52703ebef6fc
+		sourceLineageTag: 9682d38e-bddb-4870-8bb5-05326cbcb681
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Country_Code_Iso3
+
+		annotation SummarizationSetBy = User
+
+	column Pop_Total_Count
+		dataType: double
+		lineageTag: 0026164b-1c61-4942-a0c9-548b65c78fda
+		sourceLineageTag: 8cdbe7d8-eb99-4fe1-a2c5-cf85d4982fec
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Pop_Total_Count
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fact_Benchmarks = entity
+		mode: directQuery
+		source
+			entityName: Fact_Benchmarks
+			expressionSource: 'DirectQuery para AS - Gold_Semantic_Model'
+

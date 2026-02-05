@@ -1,0 +1,32 @@
+relationship ce6d1829-503b-4870-b26f-6a5920a251dc
+	fromColumn: Fact_Wealth_Distribution.Country_Code_Iso3
+	toColumn: Dim_Geography.Country_Code_Iso3
+
+relationship 6f9a60bb-07e6-426c-9c29-2b60da7ee632
+	fromColumn: Fact_Wealth_Distribution.Year
+	toColumn: Dim_Date.Year
+
+relationship 6a009f77-38e9-41f1-90f9-0f893e42f6fc
+	fromColumn: Fact_Social_Barriers.Country_Code_Iso3
+	toColumn: Dim_Geography.Country_Code_Iso3
+
+relationship 925ccca9-fcb7-45da-b1ea-153e4c22c5c5
+	fromColumn: Fact_Social_Barriers.Year
+	toColumn: Dim_Date.Year
+
+relationship 0894cb81-a2e0-4397-ba00-9a9d1596f81f
+	fromColumn: Fact_Macro_Indicators.Country_Code_Iso3
+	toColumn: Dim_Geography.Country_Code_Iso3
+
+relationship 48ca0e76-36a9-4916-82fd-bc32453f11c0
+	fromColumn: Fact_Macro_Indicators.Year
+	toColumn: Dim_Date.Year
+
+relationship 5a53bc9a-2168-4143-a019-747f9d2be70e
+	fromColumn: Fact_Benchmarks.Year
+	toColumn: Dim_Date.Year
+
+relationship a0c14da9-e64b-4d7d-9c31-6fdb6df305c9
+	fromColumn: Fact_Benchmarks.Country_Code_Iso3
+	toColumn: Dim_Geography.Country_Code_Iso3
+

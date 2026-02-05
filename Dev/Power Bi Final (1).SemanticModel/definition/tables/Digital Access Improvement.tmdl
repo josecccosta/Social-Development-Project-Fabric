@@ -1,0 +1,26 @@
+table 'Digital Access Improvement'
+	lineageTag: b62ede65-4b63-4d7e-b86b-95c099a46014
+
+	measure 'Valor de Digital Access Improvement' = SELECTEDVALUE('Digital Access Improvement'[Digital Access Improvement])
+		formatString: 0
+		lineageTag: 13b4bb56-c519-4638-ac8a-51a607db13e9
+
+	column 'Digital Access Improvement'
+		formatString: 0
+		lineageTag: 8926f0d2-0cba-40ce-84b8-1811b6f32da2
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'Digital Access Improvement' = calculated
+		mode: import
+		source = GENERATESERIES(0, 100, 1)
+
+	annotation PBI_Id = 0af49ae355364173ba135c53ba3d8b00
+

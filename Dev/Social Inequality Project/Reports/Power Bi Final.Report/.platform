@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Report",
-    "displayName": "Report Principal"
+    "displayName": "Power Bi Final"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "a8a63d20-d220-820b-4a78-0bc03fa8dac4"
+    "logicalId": "cbdbc32b-18c1-9827-4100-e214f87e0e5b"
   }
 }

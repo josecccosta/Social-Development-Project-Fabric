@@ -1,0 +1,26 @@
+table 'Literacy Improvement'
+	lineageTag: 41be5790-b479-4f56-960e-253a9175aaf0
+
+	measure 'Valor de Literacy Improvement' = SELECTEDVALUE('Literacy Improvement'[Literacy Improvement])
+		formatString: 0
+		lineageTag: bf0cef66-9928-4422-b032-5ebea8c9abc5
+
+	column 'Literacy Improvement'
+		formatString: 0
+		lineageTag: d0e3f7cd-f7f8-4cd2-88b7-3e608e53fff9
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'Literacy Improvement' = calculated
+		mode: import
+		source = GENERATESERIES(0, 100, 1)
+
+	annotation PBI_Id = adc08fd4736e4a8ebcffd24547b19be3
+

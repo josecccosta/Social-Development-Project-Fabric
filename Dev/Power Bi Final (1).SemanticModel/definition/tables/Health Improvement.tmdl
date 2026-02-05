@@ -1,0 +1,26 @@
+table 'Health Improvement'
+	lineageTag: 22e4f6ff-9d1c-4558-9fbc-8a0f7cff5ca9
+
+	measure 'Valor de Health Improvement' = SELECTEDVALUE('Health Improvement'[Health Improvement])
+		formatString: 0
+		lineageTag: 66893cb9-9f73-49ba-a312-498ef9c88bdc
+
+	column 'Health Improvement'
+		formatString: 0
+		lineageTag: 7e67d41e-9e83-4114-a6fc-6adb908748b1
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'Health Improvement' = calculated
+		mode: import
+		source = GENERATESERIES(0, 100, 1)
+
+	annotation PBI_Id = 7401e5679b564b3a98f89102fbe29839
+

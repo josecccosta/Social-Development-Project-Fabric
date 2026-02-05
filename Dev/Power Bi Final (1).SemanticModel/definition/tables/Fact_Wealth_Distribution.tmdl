@@ -1,0 +1,103 @@
+table Fact_Wealth_Distribution
+	lineageTag: 8ac353e6-999b-48e6-a204-de0fca9cd1ea
+	sourceLineageTag: 64f90603-f94d-4d16-9a52-365e1bee1f59
+
+	column Country_Code_Iso3
+		dataType: string
+		lineageTag: 36088247-3b56-49a9-968e-6049b1a3f19c
+		sourceLineageTag: 3ac73a8f-09bf-4fd8-bddb-365351462eb8
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Country_Code_Iso3
+
+		annotation SummarizationSetBy = User
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 65aff2d3-a68b-465f-b877-4367aefd6dc3
+		sourceLineageTag: c86ec3b3-a14a-4242-8e38-dc43519cfde5
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = User
+
+	column ID
+		dataType: double
+		lineageTag: e71e3eb9-d6a0-4190-b43e-3b58a5ac0e19
+		sourceLineageTag: 16268eb6-8663-43e7-b8b7-d11841e42991
+		dataCategory: Uncategorized
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Share_Top_10_pct
+		dataType: double
+		lineageTag: 7ed65596-e916-47fb-bce0-fe0bc6a95784
+		sourceLineageTag: 8849c7e8-df6d-44af-9c43-2724b7eee359
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Share_Top_10_pct
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Share_Top_1_pct
+		dataType: double
+		lineageTag: 93dd4c01-665b-425a-947f-c529c29294e9
+		sourceLineageTag: 27122746-d6f6-4a48-926b-5adb0b076a0f
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Share_Top_1_pct
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Share_Middle_40_pct
+		dataType: double
+		lineageTag: d6f088c5-c721-4946-a1b0-8224ae04a26c
+		sourceLineageTag: 866d49b9-00bf-4329-b5fe-a195e5bace4d
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Share_Middle_40_pct
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Share_Bottom_50_pct
+		dataType: double
+		lineageTag: ee37fb8c-8b7b-448f-9991-0f2715563da6
+		sourceLineageTag: ccf8a9f6-0cdd-4b2c-aefe-34a91520ba94
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Share_Bottom_50_pct
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Monthly_Employee_Earnings
+		dataType: double
+		lineageTag: cf96e34d-8339-4f0a-8f74-84feb6e14fe8
+		sourceLineageTag: 15bf5527-b7d4-4b89-afc6-12b1dd7b549b
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Monthly_Employee_Earnings
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fact_Wealth_Distribution = entity
+		mode: directQuery
+		source
+			entityName: Fact_Wealth_Distribution
+			expressionSource: 'DirectQuery para AS - Gold_Semantic_Model'
+

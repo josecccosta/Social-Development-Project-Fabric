@@ -125,7 +125,7 @@
 # 
 # #### 3.3.2. Key Transformations & Business Logic
 # ##### 3.3.2.1. Data Enrichment & Geospatial Intelligence
-# To enable advanced mapping in dashboards, we performed a massive lookup operation:
+# To enable advanced mapping in dashboards, we performed a massive lookup operation.
 # 
 # - **Coordinate Mapping:** Applied a dictionary of 249 countries and 6 regions to inject latitude and longitude for both specific countries and their parent regions.
 # - **Demographic Context:** Enriched Fact_Macro_Indicators and Fact_Benchmarks by joining with population data from the Bronze layer to provide scale to the social metrics.

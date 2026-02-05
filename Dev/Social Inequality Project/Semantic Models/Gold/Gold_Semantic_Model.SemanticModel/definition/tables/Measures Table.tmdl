@@ -880,6 +880,280 @@ table 'Measures Table'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure Average_Global_Wage = ```
+			
+			VAR AnoContexto = MAX('Dim_Date'[Year])
+			RETURN
+			ROUND(
+			    AVERAGEX(
+			        -- This 'ALL' removes the filters from the geography table
+			        ALL('Dim_Geography'),
+			        VAR UltimoAno = 
+			            CALCULATE(
+			                MAX('Fact_Wealth_Distribution'[Year]), 
+			                'Fact_Wealth_Distribution'[Year] <= AnoContexto, 
+			                NOT ISBLANK('Fact_Wealth_Distribution'[Monthly_Employee_Earnings]), 
+			                ALL('Dim_Date')
+			            )
+			        RETURN
+			        CALCULATE(
+			            MAX('Fact_Wealth_Distribution'[Monthly_Employee_Earnings]), 
+			            'Fact_Wealth_Distribution'[Year] = UltimoAno, 
+			            ALL('Dim_Date')
+			        )
+			    ),
+			    2
+			)
+			```
+		displayFolder: Targets Gauges Page 3
+		lineageTag: a88384d4-e26b-4f3d-8cd6-37f3378e708e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_Female_Account = ```
+			
+			VAR AnoContexto = MAX('Dim_Date'[Year])
+			RETURN
+			ROUND(
+			    AVERAGEX(
+			        -- This 'ALL' removes the filters from the geography table
+			        ALL('Dim_Geography'),
+			        VAR UltimoAno = 
+			            CALCULATE(
+			                MAX('Fact_Social_Barriers'[Year]), 
+			                'Fact_Social_Barriers'[Year] <= AnoContexto, 
+			                NOT ISBLANK('Fact_Social_Barriers'[Female Account Ownership]), 
+			                ALL('Dim_Date')
+			            )
+			        RETURN
+			        CALCULATE(
+			            MAX('Fact_Social_Barriers'[Female Account Ownership]), 
+			            'Fact_Social_Barriers'[Year] = UltimoAno, 
+			            ALL('Dim_Date')
+			        )
+			    ),
+			    2
+			)
+			```
+		displayFolder: Targets Gauges Page 3
+		lineageTag: 6bfc885c-0945-4039-97d9-c02cf2c097a7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_Gini_Index = ```
+			
+			VAR AnoContexto = MAX('Dim_Date'[Year])
+			RETURN
+			ROUND(
+			    AVERAGEX(
+			        -- This 'ALL' removes the filters from the geography table
+			        ALL('Dim_Geography'),
+			        VAR UltimoAno = 
+			            CALCULATE(
+			                MAX('Fact_Macro_Indicators'[Year]), 
+			                'Fact_Macro_Indicators'[Year] <= AnoContexto, 
+			                NOT ISBLANK('Fact_Macro_Indicators'[Gini_Index]), 
+			                ALL('Dim_Date')
+			            )
+			        RETURN
+			        CALCULATE(
+			            MAX('Fact_Macro_Indicators'[Gini_Index]), 
+			            'Fact_Macro_Indicators'[Year] = UltimoAno, 
+			            ALL('Dim_Date')
+			        )
+			    ),
+			    2
+			)
+			```
+		displayFolder: Targets Gauges Page 3
+		lineageTag: c70781aa-9b0e-4106-afa0-c0025bec4bc4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_Life_Expectancy = ```
+			
+			VAR AnoContexto = MAX('Dim_Date'[Year])
+			RETURN
+			ROUND(
+			    AVERAGEX(
+			        -- This 'ALL' removes the filters from the geography table
+			        ALL('Dim_Geography'),
+			        VAR UltimoAno = 
+			            CALCULATE(
+			                MAX('Fact_Social_Barriers'[Year]), 
+			                'Fact_Social_Barriers'[Year] <= AnoContexto, 
+			                NOT ISBLANK('Fact_Social_Barriers'[Life_Expectancy]), 
+			                ALL('Dim_Date')
+			            )
+			        RETURN
+			        CALCULATE(
+			            MAX('Fact_Social_Barriers'[Life_Expectancy]), 
+			            'Fact_Social_Barriers'[Year] = UltimoAno, 
+			            ALL('Dim_Date')
+			        )
+			    ),
+			    2
+			)
+			```
+		displayFolder: Targets Gauges Page 3
+		lineageTag: 8165ff6a-4471-49cc-b4c9-bc132260be49
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_Internet_Access = ```
+			
+			VAR AnoContexto = MAX('Dim_Date'[Year])
+			RETURN
+			ROUND(
+			    AVERAGEX(
+			        -- This 'ALL' removes the filters from the geography table
+			        ALL('Dim_Geography'),
+			        VAR UltimoAno = 
+			            CALCULATE(
+			                MAX('Fact_Social_Barriers'[Year]), 
+			                'Fact_Social_Barriers'[Year] <= AnoContexto, 
+			                NOT ISBLANK('Fact_Social_Barriers'[Internet Access]), 
+			                ALL('Dim_Date')
+			            )
+			        RETURN
+			        CALCULATE(
+			            MAX('Fact_Social_Barriers'[Internet Access]), 
+			            'Fact_Social_Barriers'[Year] = UltimoAno, 
+			            ALL('Dim_Date')
+			        )
+			    ),
+			    2
+			)
+			```
+		displayFolder: Targets Gauges Page 3
+		lineageTag: 6cea317c-79da-4dbf-90aa-8b259d60497e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_Literacy_Rate = ```
+			
+			VAR AnoContexto = MAX('Dim_Date'[Year])
+			RETURN
+			ROUND(
+			    AVERAGEX(
+			        -- This 'ALL' removes the filters from the geography table
+			        ALL('Dim_Geography'),
+			        VAR UltimoAno = 
+			            CALCULATE(
+			                MAX('Fact_Social_Barriers'[Year]), 
+			                'Fact_Social_Barriers'[Year] <= AnoContexto, 
+			                NOT ISBLANK('Fact_Social_Barriers'[Literacy Rate]), 
+			                ALL('Dim_Date')
+			            )
+			        RETURN
+			        CALCULATE(
+			            MAX('Fact_Social_Barriers'[Literacy Rate]), 
+			            'Fact_Social_Barriers'[Year] = UltimoAno, 
+			            ALL('Dim_Date')
+			        )
+			    ),
+			    2
+			)
+			```
+		displayFolder: Targets Gauges Page 3
+		lineageTag: 3a98d515-0175-40e1-84c6-c6c1cd2ad558
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_School_Attendance = ```
+			
+			VAR AnoContexto = MAX('Dim_Date'[Year])
+			RETURN
+			ROUND(
+			    AVERAGEX(
+			        -- This 'ALL' removes the filters from the geography table
+			        ALL('Dim_Geography'),
+			        VAR UltimoAno = 
+			            CALCULATE(
+			                MAX('Fact_Social_Barriers'[Year]), 
+			                'Fact_Social_Barriers'[Year] <= AnoContexto, 
+			                NOT ISBLANK('Fact_Social_Barriers'[School Attendance]), 
+			                ALL('Dim_Date')
+			            )
+			        RETURN
+			        CALCULATE(
+			            MAX('Fact_Social_Barriers'[School Attendance]), 
+			            'Fact_Social_Barriers'[Year] = UltimoAno, 
+			            ALL('Dim_Date')
+			        )
+			    ),
+			    2
+			)
+			```
+		displayFolder: Targets Gauges Page 3
+		lineageTag: 3c2bd4c3-8b6f-472e-b3fe-a805c3d3e756
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Average_Global_Unemployment = ```
+			
+			VAR AnoContexto = MAX('Dim_Date'[Year])
+			RETURN
+			ROUND(
+			    AVERAGEX(
+			        -- This 'ALL' removes the filters from the geography table
+			        ALL('Dim_Geography'),
+			        VAR UltimoAno = 
+			            CALCULATE(
+			                MAX('Fact_Macro_Indicators'[Year]), 
+			                'Fact_Macro_Indicators'[Year] <= AnoContexto, 
+			                NOT ISBLANK('Fact_Macro_Indicators'[Unemployment_Total]), 
+			                ALL('Dim_Date')
+			            )
+			        RETURN
+			        CALCULATE(
+			            MAX('Fact_Macro_Indicators'[Unemployment_Total]), 
+			            'Fact_Macro_Indicators'[Year] = UltimoAno, 
+			            ALL('Dim_Date')
+			        )
+			    ),
+			    2
+			)
+			```
+		displayFolder: Targets Gauges Page 3
+		lineageTag: 85846ef5-5fce-453a-abe5-f4d17b40b986
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure GDP_Last_Available = ```
+			
+			VAR LastYear = CALCULATE(MAX('Fact_Macro_Indicators'[Year]), NOT ISBLANK('Fact_Macro_Indicators'[GDP_per_Capita]))
+			RETURN
+			ROUND(
+			    CALCULATE(
+			        AVERAGE('Fact_Macro_Indicators'[GDP_per_Capita]),
+			        'Fact_Macro_Indicators'[Year] = LastYear
+			    ), 
+			    0
+			)
+			```
+		displayFolder: Visuals Page 4
+		lineageTag: a1a5f368-bdc7-4f60-b0c0-20a453dd7974
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Inflation_Last_Available = ```
+			
+			VAR LastYear = CALCULATE(MAX('Fact_Macro_Indicators'[Year]), NOT ISBLANK('Fact_Macro_Indicators'[Inflation_CPI_Pct]))
+			RETURN
+			ROUND(
+			    CALCULATE(
+			        AVERAGE('Fact_Macro_Indicators'[Inflation_CPI_Pct]),
+			        'Fact_Macro_Indicators'[Year] = LastYear
+			    ), 
+			    0
+			)
+			```
+		displayFolder: Visuals Page 4
+		lineageTag: 73c9fba1-2147-4ddc-ae65-1c1d67cc5420
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Column
 		formatString: 0
 		lineageTag: e477b466-49aa-406c-90ca-e1a55369d89d

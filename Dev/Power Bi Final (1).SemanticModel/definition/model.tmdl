@@ -1,0 +1,27 @@
+model Model
+	culture: pt-PT
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-PT
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DirectQuery para AS - Gold_Semantic_Model"]
+
+annotation PBI_ProTooling = ["WebModelingEdit"]
+
+ref table Dim_Date
+ref table Dim_Geography
+ref table Fact_Wealth_Distribution
+ref table Fact_Social_Barriers
+ref table Fact_Macro_Indicators
+ref table Fact_Benchmarks
+ref table 'Measures Table'
+ref table 'Literacy Improvement'
+ref table 'Health Improvement'
+ref table 'Digital Access Improvement'
+
+ref cultureInfo pt-PT
+

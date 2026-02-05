@@ -1,0 +1,52 @@
+table Dim_Date
+	lineageTag: 3c842a92-17a3-446f-9028-aaf3ab21b7a6
+	sourceLineageTag: 3ed6e4e4-7a06-4a41-8223-e2008f1b0596
+
+	column Year
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		lineageTag: b4fb58aa-66ba-4cb0-8900-4f47f5fadff0
+		sourceLineageTag: 0c3e6303-390d-4870-903b-a5409ad983c8
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = User
+
+	column Decade
+		dataType: string
+		lineageTag: 2b0343b8-3694-4255-98c7-20173d3e4764
+		sourceLineageTag: 7705d3dd-206c-493e-97b2-34a50568b81b
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Decade
+
+		annotation SummarizationSetBy = User
+
+	column Economic_Context
+		dataType: string
+		lineageTag: fc9f0f5c-5928-4c09-a9b1-5a4b18355996
+		sourceLineageTag: 237c01c7-6078-4446-b35a-b5dcba9c21ab
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Economic_Context
+
+		annotation SummarizationSetBy = User
+
+	column Global_Goals
+		dataType: string
+		lineageTag: 2eb7c3cb-ee79-41b2-b51a-24790372d0bc
+		sourceLineageTag: 39216453-6f11-45a6-ba8a-c0bd6095605d
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Global_Goals
+
+		annotation SummarizationSetBy = User
+
+	partition Dim_Date = entity
+		mode: directQuery
+		source
+			entityName: Dim_Date
+			expressionSource: 'DirectQuery para AS - Gold_Semantic_Model'
+

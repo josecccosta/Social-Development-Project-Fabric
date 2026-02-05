@@ -1005,3 +1005,36 @@ print("Sucesso: Valor da Islândia (2016) anulado e tabela Gold atualizada!")
 # META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
+
+# CELL ********************
+
+from pyspark.sql import functions as F
+
+# Substitui 'caminho/do/teu/ficheiro.csv' pelo caminho real
+# Se estiveres a usar uma tabela do catálogo, usa spark.table("nome_da_tabela")
+df = spark.read.table('Gold_Lakehouse.dbo.Dim_Geography')
+
+# Agora o código já vai funcionar:
+colunas_essenciais = [
+    "Average Wage Last Available", 
+    "Literacy_Rate_Last_Available", 
+    "Life_Expectancy_Last_Available", 
+    "Internet_Access_Last_Available"
+]
+
+df_completos = df.dropna(subset=colunas_essenciais)
+
+for col_name in colunas_essenciais:
+    df_completos = df_completos.filter(
+        (F.col(col_name) != "") & (F.col(col_name).isNotNull())
+    )
+
+paises_disponiveis = df_completos.select("country_or_area").distinct().orderBy("country_or_area")
+paises_disponiveis.show(paises_disponiveis.count(), truncate=False)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
