@@ -139,19 +139,25 @@ table 'Measures Table'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Avg Top 1% Share' = EXTERNALMEASURE("Avg Top 1% Share", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		isHidden
 		displayFolder: Vasco
 		lineageTag: 3de3009c-1f58-45fc-adfb-2c6bcde7cb9e
 		sourceLineageTag: 0c855407-4c28-4d19-a39f-a566cfee8834
 		dataCategory: Uncategorized
 
+		changedProperty = IsHidden
+
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Concentration Trend' = EXTERNALMEASURE("Concentration Trend", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
 		formatString: 0
+		isHidden
 		displayFolder: Vasco
 		lineageTag: 0fb3ef98-0966-4888-a76b-649a4bfe55fb
 		sourceLineageTag: 749003a1-1f73-4a00-a120-109a80132882
 		dataCategory: Uncategorized
+
+		changedProperty = IsHidden
 
 	measure Wealth_Share_Bottom_50_Last_Available = EXTERNALMEASURE("Wealth_Share_Bottom_50_Last_Available", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
 		displayFolder: Visuals 2.3
@@ -210,42 +216,57 @@ table 'Measures Table'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Avg Child Mortality (Pre-COVID)' = EXTERNALMEASURE("Avg Child Mortality (Pre-COVID)", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		isHidden
 		displayFolder: Vasco
 		lineageTag: 3ba2ee71-0f60-483e-af7f-32a7d3a29c13
 		sourceLineageTag: 43d01e63-61c9-4403-a4df-7139d3bc3c92
 		dataCategory: Uncategorized
 
+		changedProperty = IsHidden
+
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Avg Life Expectancy (Pre-COVID)' = EXTERNALMEASURE("Avg Life Expectancy (Pre-COVID)", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		isHidden
 		displayFolder: Vasco
 		lineageTag: 7881506d-10b6-4176-9791-7629a2c8ee95
 		sourceLineageTag: 6d27810a-3450-4ed8-95e6-f028ddcf7dde
 		dataCategory: Uncategorized
 
+		changedProperty = IsHidden
+
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Pre-COVID Unemployment' = EXTERNALMEASURE("Pre-COVID Unemployment", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		isHidden
 		displayFolder: Vasco
 		lineageTag: a7b62259-037a-4733-b6d5-2fcf2073f267
 		sourceLineageTag: b17631c9-c446-4ab3-abf0-f75a98f9b7ef
 		dataCategory: Uncategorized
 
+		changedProperty = IsHidden
+
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'COVID Peak Unemployment' = EXTERNALMEASURE("COVID Peak Unemployment", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		isHidden
 		displayFolder: Vasco
 		lineageTag: 662b1d94-ab75-47bf-82d8-bdc44d4123f9
 		sourceLineageTag: 7c6bb672-0997-4266-8055-15aea385c8c6
 		dataCategory: Uncategorized
 
+		changedProperty = IsHidden
+
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Unemployment Shock (COVID)' = EXTERNALMEASURE("Unemployment Shock (COVID)", DOUBLE, "DirectQuery para AS - Gold_Semantic_Model")
+		isHidden
 		displayFolder: Vasco
 		lineageTag: 411624fa-627f-4aa5-a058-796a8559848e
 		sourceLineageTag: 046e9386-1682-439e-8a48-e6f1ce91507b
 		dataCategory: Uncategorized
+
+		changedProperty = IsHidden
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -388,16 +409,22 @@ table 'Measures Table'
 			-- 4. Garantir que o limite é 100 (O "Cap")
 			RETURN
 			MIN(100, ScoreCalculado)
+		displayFolder: Simulator
 		lineageTag: 34eb3716-438e-4d9f-bf75-f8bf01a844af
 
 		changedProperty = Name
 
+		changedProperty = DisplayFolder
+
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure Score_Base_Real = [Average Wage Last Available]
+		displayFolder: Simulator
 		lineageTag: 6660094a-a403-404d-a268-dda39a98a144
 
 		changedProperty = Name
+
+		changedProperty = DisplayFolder
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -420,9 +447,12 @@ table 'Measures Table'
 			RETURN 
 			IF(ISBLANK(Base), BLANK(), Base + Impacto_Real)
 			```
+		displayFolder: Simulator
 		lineageTag: 26630aca-ebfd-4444-8abf-27954672be25
 
 		changedProperty = Name
+
+		changedProperty = DisplayFolder
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -432,9 +462,12 @@ table 'Measures Table'
 			VAR MaxWage = MAXX(HistoricoFiltrado, [Average Wage Last Available])
 			VAR MaxLit = MAXX(HistoricoFiltrado, [Literacy_Rate_Last_Available])
 			RETURN DIVIDE(MaxWage, MaxLit, 0) * 0.1
+		displayFolder: Simulator
 		lineageTag: 866a3059-8a14-4995-ad7c-3ac130154e40
 
 		changedProperty = Name
+
+		changedProperty = DisplayFolder
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -451,9 +484,12 @@ table 'Measures Table'
 			
 			RETURN DIVIDE(MaxWage, MaxHealth, 0) * 0.1
 			```
+		displayFolder: Simulator
 		lineageTag: 10fa0a85-8e2f-4234-92d2-1e9d1417fdcf
 
 		changedProperty = Name
+
+		changedProperty = DisplayFolder
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -470,9 +506,12 @@ table 'Measures Table'
 			
 			RETURN DIVIDE(MaxWage, MaxDigital, 0) * 0.1
 			```
+		displayFolder: Simulator
 		lineageTag: a6187958-5d5b-4e2b-9397-528dcf79be80
 
 		changedProperty = Name
+
+		changedProperty = DisplayFolder
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -482,9 +521,12 @@ table 'Measures Table'
 			VAR Falta = 100 - Atual
 			VAR Incremento = Falta * ([Valor de Literacy Improvement] / 100)
 			RETURN Atual + Incremento
+		displayFolder: Simulator
 		lineageTag: 7529525b-9137-4ee8-b954-22c15d510d26
 
 		changedProperty = Name
+
+		changedProperty = DisplayFolder
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -495,9 +537,12 @@ table 'Measures Table'
 			-- O slider de 0 a 100 passa a representar a % do que falta que queremos preencher
 			VAR Incremento = Falta * ([Valor de Health Improvement] / 100)
 			RETURN Atual + Incremento
+		displayFolder: Simulator
 		lineageTag: 29e7afd9-11a7-41fe-b01a-551a790c0747
 
 		changedProperty = Name
+
+		changedProperty = DisplayFolder
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -507,11 +552,80 @@ table 'Measures Table'
 			VAR Falta = 100 - Atual
 			VAR Incremento = Falta * ([Valor de Digital Access Improvement] / 100)
 			RETURN Atual + Incremento
+		displayFolder: Simulator
 		lineageTag: 379f0755-cd32-4885-8fe2-f2945004d91c
 
 		changedProperty = Name
 
+		changedProperty = DisplayFolder
+
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Projected_Salary_Card = [Score_Projetado]
+		displayFolder: Simulator
+		lineageTag: d3705670-c33d-4e29-83af-786f1add7ea2
+
+		changedProperty = Name
+
+		changedProperty = DisplayFolder
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Absolute_Gain_Card = [Score_Projetado] - [Average Wage Last Available]
+		displayFolder: Simulator
+		lineageTag: 00c22657-e5e8-4cb8-b4a2-c1910aaf3598
+
+		changedProperty = Name
+
+		changedProperty = DisplayFolder
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Growth_Percentage_Card = ```
+			
+			DIVIDE(
+			    [Score_Projetado] - [Average Wage Last Available], 
+			    [Average Wage Last Available], 
+			    0
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Simulator
+		lineageTag: 2a063df2-f419-462b-a426-d38a80401457
+
+		changedProperty = Name
+
+		changedProperty = DisplayFolder
+
+		changedProperty = FormatString
+
+	measure 'Salary Text' = ```
+			
+			VAR Gain = FORMAT([Absolute_Gain_Card], "+#,##0 $")
+			
+			RETURN 
+			Gain
+			```
+		displayFolder: Simulator
+		lineageTag: 34e76a09-6158-49ca-adcf-b6b1b76793be
+
+		changedProperty = Name
+
+		changedProperty = DisplayFolder
+
+	measure 'Salary Final' = ```
+			
+			VAR Salary = FORMAT([Projected_Salary_Card], "#,##0 $")
+			
+			RETURN 
+			Salary
+			```
+		displayFolder: Simulator
+		lineageTag: 90359c03-44b2-4242-9c19-379261010fe2
+
+		changedProperty = Name
+
+		changedProperty = DisplayFolder
 
 	column Column
 		dataType: int64

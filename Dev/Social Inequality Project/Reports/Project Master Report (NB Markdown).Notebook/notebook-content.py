@@ -263,25 +263,3 @@
 # - **Resource Contention:** Operating within a shared workspace meant that available compute power was divided among multiple concurrent users and processes. This often led to "throttling," where execution times for notebooks and pipelines increased during peak usage periods.
 # - **Concurrency and Queueing:** The most persistent issue was the lack of parallel processing overhead. Due to the low capacity limits, the workspace struggled to handle multiple active sessions. This resulted in frequent job queuing or outright failures when one team member attempted to run a notebook while another was refreshing a semantic model.
 
-
-# MARKDOWN ********************
-
-# Fact_Macro_Indicators (Main table)
-# 
-# Campos: Country_Code, Year, Gini_Index, GDP_per_Capita, GDP_Annual_Growth_Pct, Inflation_CPI_Pct, HDI, Unemployment_Rate
-# 
-# O que responde: Distribuição Global, Evolução Temporal e Fatores Determinantes.
-# 
-# Fact_Wealth_Distribution (The Extremes Table)
-# 
-# Campos: Country_Code, Year, Top_1_Share, Top_10_Share, Middle_40_Share, Bottom_50_Share, Monthly_Employee_Earnings.
-# 
-# O que responde: Os Extremos (Top 1%) e se o crescimento do PIB foi realmente inclusivo.
-# 
-# Fact_social_barriers (The Opportunity Table)
-# 
-# Campos: Country_Code, Year, School_Attendance, Literacy_Rate, Internet_Access, Female_Account_Ownership,MPI, Life Expectancy, 
-# 
-# O que responde: Educação vs Rendimento, Gap Digital e Género e Economia.
-# 
-# Dim_Date e Dim_Geography
