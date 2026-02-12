@@ -1,15 +1,24 @@
-<img width="259" height="53" alt="image" src="https://github.com/user-attachments/assets/333fc494-b334-4cec-8a33-58dd63a5f6ab" /># The Data Abyss: A Multidimensional Analysis of Social Inequality
+# The Data Abyss: A Multidimensional Analysis of Social Inequality
 
-# 1. Project Objectives
+### 🛠 Technology Stack
+![Microsoft Fabric](https://img.shields.io/badge/Microsoft%20Fabric-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
+![Dataflow Gen2](https://img.shields.io/badge/Dataflow%20Gen2-01B8AA?style=for-the-badge&logo=microsoft-azure&logoColor=white)
+![Pipelines](https://img.shields.io/badge/Pipelines-0078D4?style=for-the-badge&logo=azure-pipelines&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C80F?style=for-the-badge&logo=power-bi&logoColor=black)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
+
+
+## 1. Project Objectives
 In the modern global economy, the gap between the "haves" and the "have-nots" is no longer just a matter of bank balances. It is a vast, multidimensional abyss that separates nations and regions across every facet of human existence. By synthesizing these diverse indicators, we can identify not just where inequality exists, but how it evolves across different economic contexts and global policy eras (MDGs vs. SDGs).
 
-## 1.1 The Regional Divide
+### 1.1 The Regional Divide
 While global GDP has seen significant growth in recent decades, this prosperity has not been distributed equally. Inequality manifests differently depending on the geographic lens:
 
 - **The Global North vs. Global South:** We see a stark contrast in "Social Barriers," where high-income regions enjoy near-universal literacy and internet access, while other regions struggle with basic infrastructure.
 - **Intra-Regional Disparity:** Even within fast-growing regions, the "Gini Index" reveals that internal wealth concentration can be extreme, creating "islands of wealth" surrounded by systemic poverty.
 
-## 1.2 Measuring the Abyss
+### 1.2 Measuring the Abyss
 To truly understand the depth of this inequality, this project moves beyond simple GDP metrics. We employ a multidimensional framework to compare countries using four critical pillars:
 
 1. **Economic Concentration (The Wealth Gap):** Using the Income Share of the Top 1% and 10% to measure how much national wealth is captured by a tiny fraction of the population.
